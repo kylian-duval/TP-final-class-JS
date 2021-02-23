@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -14,8 +14,15 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <?php require "user.php" ?>
 </head>
 <body>
+<?php 
+$BDD = new PDO('mysql:host=localhost; dbname=jeu; charset=utf8', 'root', '');
+$user = new user($BDD) ;
+
+
+?>
     <div class="container-fluid">
         <div class="row min-vh-100">
             <div class="col-12">
@@ -36,10 +43,10 @@
                             <div class="col-auto">
                                 <ul class="top-nav">
                                     <li>
-                                        <a href="register.html"><i class="fas fa-user-edit mr-2"></i>Register</a>
+                                        <a href="register.php"><i class="fas fa-user-edit mr-2"></i>Register</a>
                                     </li>
                                     <li>
-                                        <a href="login.html"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
+                                        <a href="login.php"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
                                     </li>
                                 </ul>
                             </div>
@@ -52,7 +59,7 @@
                         <div class="row">
                             <div class="col-lg-auto">
                                 <div class="site-logo text-center text-lg-left">
-                                    <a href="index.html">E-Commerce</a>
+                                    <a href="index.php">E-Commerce</a>
                                 </div>
                             </div>
                             <div class="col-lg-5 mx-auto mt-4 mt-lg-0">
@@ -87,36 +94,36 @@
                                 <div class="collapse navbar-collapse" id="mainNav">
                                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" id="electronics" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Electronics</a>
                                             <div class="dropdown-menu" aria-labelledby="electronics">
-                                                <a class="dropdown-item" href="category.html">Computers</a>
-                                                <a class="dropdown-item" href="category.html">Mobile Phones</a>
-                                                <a class="dropdown-item" href="category.html">Television Sets</a>
-                                                <a class="dropdown-item" href="category.html">DSLR Cameras</a>
-                                                <a class="dropdown-item" href="category.html">Projectors</a>
+                                                <a class="dropdown-item" href="category.php">Computers</a>
+                                                <a class="dropdown-item" href="category.php">Mobile Phones</a>
+                                                <a class="dropdown-item" href="category.php">Television Sets</a>
+                                                <a class="dropdown-item" href="category.php">DSLR Cameras</a>
+                                                <a class="dropdown-item" href="category.php">Projectors</a>
                                             </div>
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" id="fashion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Fashion</a>
                                             <div class="dropdown-menu" aria-labelledby="fashion">
-                                                <a class="dropdown-item" href="category.html">Men's</a>
-                                                <a class="dropdown-item" href="category.html">Women's</a>
-                                                <a class="dropdown-item" href="category.html">Children's</a>
-                                                <a class="dropdown-item" href="category.html">Accessories</a>
-                                                <a class="dropdown-item" href="category.html">Footwear</a>
+                                                <a class="dropdown-item" href="category.php">Men's</a>
+                                                <a class="dropdown-item" href="category.php">Women's</a>
+                                                <a class="dropdown-item" href="category.php">Children's</a>
+                                                <a class="dropdown-item" href="category.php">Accessories</a>
+                                                <a class="dropdown-item" href="category.php">Footwear</a>
                                             </div>
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" id="books" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Books</a>
                                             <div class="dropdown-menu" aria-labelledby="books">
-                                                <a class="dropdown-item" href="category.html">Adventure</a>
-                                                <a class="dropdown-item" href="category.html">Horror</a>
-                                                <a class="dropdown-item" href="category.html">Romantic</a>
-                                                <a class="dropdown-item" href="category.html">Children's</a>
-                                                <a class="dropdown-item" href="category.html">Non-Fiction</a>
+                                                <a class="dropdown-item" href="category.php">Adventure</a>
+                                                <a class="dropdown-item" href="category.php">Horror</a>
+                                                <a class="dropdown-item" href="category.php">Romantic</a>
+                                                <a class="dropdown-item" href="category.php">Children's</a>
+                                                <a class="dropdown-item" href="category.php">Non-Fiction</a>
                                             </div>
                                         </li>
                                     </ul>
@@ -143,31 +150,21 @@
                     <div class="col-lg-4 col-md-6 col-sm-8 mx-auto bg-white py-3 mb-4">
                         <div class="row">
                             <div class="col-12">
-                                <form>
+                                <form method="post">
                                     <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input type="text" id="name" class="form-control" required>
+                                        <label for="email">Nom d'utilisateur</label>
+                                        <input type="text" id="email" class="form-control" required name="Nom">
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" id="email" class="form-control" required>
+                                        <label for="password">Mots de passe</label>
+                                        <input type="password" id="password" class="form-control" required name="mdp">
                                     </div>
                                     <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input type="password" id="password" class="form-control" required>
+                                        <label for="password-confirm">Confirme mots de passe</label>
+                                        <input type="password" id="password-confirm" class="form-control" required name="Confmdp">
                                     </div>
                                     <div class="form-group">
-                                        <label for="password-confirm">Confirm Password</label>
-                                        <input type="password" id="password-confirm" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <input type="checkbox" id="agree" class="form-check-input" required>
-                                            <label for="agree" class="form-check-label ml-2">I agree to Terms and Conditions</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-outline-dark">Register</button>
+                                        <button type="submit" class="btn btn-outline-dark" name="inscrire">s'inscrire</button>
                                     </div>
                                 </form>
                             </div>
@@ -187,7 +184,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="footer-logo">
-                                            <a href="index.html">E-Commerce</a>
+                                            <a href="index.php">E-Commerce</a>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -296,5 +293,22 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+
+<?php 
+ if(isset($_POST["inscrire"])){
+
+    
+$error = $user->registUser($_POST['Nom'], $_POST['mdp'], $_POST['Confmdp']);
+echo $error;
+
+ }
+
+
+
+?>
+
+
+
+
 </body>
 </html>

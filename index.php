@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -60,7 +60,7 @@
                                 <a href="#" class="header-item">
                                     <i class="fas fa-heart mr-2"></i><span id="header-favorite">0</span>
                                 </a>
-                                <a href="cart.html" class="header-item">
+                                <a href="cart.php" class="header-item">
                                     <i class="fas fa-shopping-bag mr-2"></i><span id="header-qty" class="mr-3">2</span>
                                     <i class="fas fa-money-bill-wave mr-2"></i><span id="header-price">$4,000</span>
                                 </a>
@@ -76,36 +76,36 @@
                                 <div class="collapse navbar-collapse" id="mainNav">
                                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" id="electronics" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Electronics</a>
                                             <div class="dropdown-menu" aria-labelledby="electronics">
-                                                <a class="dropdown-item" href="category.html">Computers</a>
-                                                <a class="dropdown-item" href="category.html">Mobile Phones</a>
-                                                <a class="dropdown-item" href="category.html">Television Sets</a>
-                                                <a class="dropdown-item" href="category.html">DSLR Cameras</a>
-                                                <a class="dropdown-item" href="category.html">Projectors</a>
+                                                <a class="dropdown-item" href="category.php">Computers</a>
+                                                <a class="dropdown-item" href="category.php">Mobile Phones</a>
+                                                <a class="dropdown-item" href="category.php">Television Sets</a>
+                                                <a class="dropdown-item" href="category.php">DSLR Cameras</a>
+                                                <a class="dropdown-item" href="category.php">Projectors</a>
                                             </div>
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" id="fashion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Fashion</a>
                                             <div class="dropdown-menu" aria-labelledby="fashion">
-                                                <a class="dropdown-item" href="category.html">Men's</a>
-                                                <a class="dropdown-item" href="category.html">Women's</a>
-                                                <a class="dropdown-item" href="category.html">Children's</a>
-                                                <a class="dropdown-item" href="category.html">Accessories</a>
-                                                <a class="dropdown-item" href="category.html">Footwear</a>
+                                                <a class="dropdown-item" href="category.php">Men's</a>
+                                                <a class="dropdown-item" href="category.php">Women's</a>
+                                                <a class="dropdown-item" href="category.php">Children's</a>
+                                                <a class="dropdown-item" href="category.php">Accessories</a>
+                                                <a class="dropdown-item" href="category.php">Footwear</a>
                                             </div>
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" id="books" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Books</a>
                                             <div class="dropdown-menu" aria-labelledby="books">
-                                                <a class="dropdown-item" href="category.html">Adventure</a>
-                                                <a class="dropdown-item" href="category.html">Horror</a>
-                                                <a class="dropdown-item" href="category.html">Romantic</a>
-                                                <a class="dropdown-item" href="category.html">Children's</a>
-                                                <a class="dropdown-item" href="category.html">Non-Fiction</a>
+                                                <a class="dropdown-item" href="category.php">Adventure</a>
+                                                <a class="dropdown-item" href="category.php">Horror</a>
+                                                <a class="dropdown-item" href="category.php">Romantic</a>
+                                                <a class="dropdown-item" href="category.php">Children's</a>
+                                                <a class="dropdown-item" href="category.php">Non-Fiction</a>
                                             </div>
                                         </li>
                                     </ul>
@@ -171,12 +171,12 @@
                                         <div class="col-12 bg-white text-center h-100 product-item">
                                             <div class="row h-100">
                                                 <div class="col-12 p-0 mb-3">
-                                                    <a href="product.html">
+                                                    <a href="product.php">
                                                         <img src="images/image-1.jpg" class="img-fluid">
                                                     </a>
                                                 </div>
                                                 <div class="col-12 mb-3">
-                                                    <a href="product.html" class="product-name">Sony Alpha DSLR Camera</a>
+                                                    <a href="product.php" class="product-name">Sony Alpha DSLR Camera</a>
                                                 </div>
                                                 <div class="col-12 mb-3">
                                                     <span class="product-price-old">
@@ -200,12 +200,12 @@
                                         <div class="col-12 bg-white text-center h-100 product-item">
                                             <div class="row h-100">
                                                 <div class="col-12 p-0 mb-3">
-                                                    <a href="product.html">
+                                                    <a href="product.php">
                                                         <img src="images/image-2.jpg" class="img-fluid">
                                                     </a>
                                                 </div>
                                                 <div class="col-12 mb-3">
-                                                    <a href="product.html" class="product-name">Optoma 4K HDR Projector</a>
+                                                    <a href="product.php" class="product-name">Optoma 4K HDR Projector</a>
                                                 </div>
                                                 <div class="col-12 mb-3">
                                                     <span class="product-price">
@@ -225,12 +225,12 @@
                                         <div class="col-12 bg-white text-center h-100 product-item">
                                             <div class="row h-100">
                                                 <div class="col-12 p-0 mb-3">
-                                                    <a href="product.html">
+                                                    <a href="product.php">
                                                         <img src="images/image-3.jpg" class="img-fluid">
                                                     </a>
                                                 </div>
                                                 <div class="col-12 mb-3">
-                                                    <a href="product.html" class="product-name">HP Envy Specter 360</a>
+                                                    <a href="product.php" class="product-name">HP Envy Specter 360</a>
                                                 </div>
                                                 <div class="col-12 mb-3">
                                                     <div class="product-price-old">
@@ -253,12 +253,12 @@
                                         <div class="col-12 bg-white text-center h-100 product-item">
                                             <div class="row h-100">
                                                 <div class="col-12 p-0 mb-3">
-                                                    <a href="product.html">
+                                                    <a href="product.php">
                                                         <img src="images/image-4.jpg" class="img-fluid">
                                                     </a>
                                                 </div>
                                                 <div class="col-12 mb-3">
-                                                    <a href="product.html" class="product-name">Dell Alienware Area 51</a>
+                                                    <a href="product.php" class="product-name">Dell Alienware Area 51</a>
                                                 </div>
                                                 <div class="col-12 mb-3">
                                                     <span class="product-price">
@@ -300,12 +300,12 @@
                                             <span class="new">New</span>
                                             <div class="row h-100">
                                                 <div class="col-12 p-0 mb-3">
-                                                    <a href="product.html">
+                                                    <a href="product.php">
                                                         <img src="images/image-1.jpg" class="img-fluid">
                                                     </a>
                                                 </div>
                                                 <div class="col-12 mb-3">
-                                                    <a href="product.html" class="product-name">Sony Alpha DSLR Camera</a>
+                                                    <a href="product.php" class="product-name">Sony Alpha DSLR Camera</a>
                                                 </div>
                                                 <div class="col-12 mb-3">
                                                     <span class="product-price-old">
@@ -330,12 +330,12 @@
                                             <span class="new">New</span>
                                             <div class="row h-100">
                                                 <div class="col-12 p-0 mb-3">
-                                                    <a href="product.html">
+                                                    <a href="product.php">
                                                         <img src="images/image-2.jpg" class="img-fluid">
                                                     </a>
                                                 </div>
                                                 <div class="col-12 mb-3">
-                                                    <a href="product.html" class="product-name">Optoma 4K HDR Projector</a>
+                                                    <a href="product.php" class="product-name">Optoma 4K HDR Projector</a>
                                                 </div>
                                                 <div class="col-12 mb-3">
                                                     <span class="product-price">
@@ -356,12 +356,12 @@
                                             <span class="new">New</span>
                                             <div class="row h-100">
                                                 <div class="col-12 p-0 mb-3">
-                                                    <a href="product.html">
+                                                    <a href="product.php">
                                                         <img src="images/image-3.jpg" class="img-fluid">
                                                     </a>
                                                 </div>
                                                 <div class="col-12 mb-3">
-                                                    <a href="product.html" class="product-name">HP Envy Specter 360</a>
+                                                    <a href="product.php" class="product-name">HP Envy Specter 360</a>
                                                 </div>
                                                 <div class="col-12 mb-3">
                                                     <div class="product-price-old">
@@ -385,12 +385,12 @@
                                             <span class="new">New</span>
                                             <div class="row h-100">
                                                 <div class="col-12 p-0 mb-3">
-                                                    <a href="product.html">
+                                                    <a href="product.php">
                                                         <img src="images/image-4.jpg" class="img-fluid">
                                                     </a>
                                                 </div>
                                                 <div class="col-12 mb-3">
-                                                    <a href="product.html" class="product-name">Dell Alienware Area 51</a>
+                                                    <a href="product.php" class="product-name">Dell Alienware Area 51</a>
                                                 </div>
                                                 <div class="col-12 mb-3">
                                                     <span class="product-price">
@@ -431,12 +431,12 @@
                                         <div class="col-12 bg-white text-center h-100 product-item">
                                             <div class="row h-100">
                                                 <div class="col-12 p-0 mb-3">
-                                                    <a href="product.html">
+                                                    <a href="product.php">
                                                         <img src="images/image-1.jpg" class="img-fluid">
                                                     </a>
                                                 </div>
                                                 <div class="col-12 mb-3">
-                                                    <a href="product.html" class="product-name">Sony Alpha DSLR Camera</a>
+                                                    <a href="product.php" class="product-name">Sony Alpha DSLR Camera</a>
                                                 </div>
                                                 <div class="col-12 mb-3">
                                                     <span class="product-price-old">
@@ -460,12 +460,12 @@
                                         <div class="col-12 bg-white text-center h-100 product-item">
                                             <div class="row h-100">
                                                 <div class="col-12 p-0 mb-3">
-                                                    <a href="product.html">
+                                                    <a href="product.php">
                                                         <img src="images/image-2.jpg" class="img-fluid">
                                                     </a>
                                                 </div>
                                                 <div class="col-12 mb-3">
-                                                    <a href="product.html" class="product-name">Optoma 4K HDR Projector</a>
+                                                    <a href="product.php" class="product-name">Optoma 4K HDR Projector</a>
                                                 </div>
                                                 <div class="col-12 mb-3">
                                                     <span class="product-price">
@@ -485,12 +485,12 @@
                                         <div class="col-12 bg-white text-center h-100 product-item">
                                             <div class="row h-100">
                                                 <div class="col-12 p-0 mb-3">
-                                                    <a href="product.html">
+                                                    <a href="product.php">
                                                         <img src="images/image-3.jpg" class="img-fluid">
                                                     </a>
                                                 </div>
                                                 <div class="col-12 mb-3">
-                                                    <a href="product.html" class="product-name">HP Envy Specter 360</a>
+                                                    <a href="product.php" class="product-name">HP Envy Specter 360</a>
                                                 </div>
                                                 <div class="col-12 mb-3">
                                                     <div class="product-price-old">
@@ -513,12 +513,12 @@
                                         <div class="col-12 bg-white text-center h-100 product-item">
                                             <div class="row h-100">
                                                 <div class="col-12 p-0 mb-3">
-                                                    <a href="product.html">
+                                                    <a href="product.php">
                                                         <img src="images/image-4.jpg" class="img-fluid">
                                                     </a>
                                                 </div>
                                                 <div class="col-12 mb-3">
-                                                    <a href="product.html" class="product-name">Dell Alienware Area 51</a>
+                                                    <a href="product.php" class="product-name">Dell Alienware Area 51</a>
                                                 </div>
                                                 <div class="col-12 mb-3">
                                                     <span class="product-price">
@@ -586,7 +586,7 @@
                             <div class="row">
                                     <div class="col-12">
                                         <div class="footer-logo">
-                                            <a href="index.html">E-Commerce</a>
+                                            <a href="index.php">E-Commerce</a>
                                         </div>
                                     </div>
                                     <div class="col-12">
