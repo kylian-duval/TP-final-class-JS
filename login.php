@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>E-Commerce Template</title>
 
@@ -14,7 +14,13 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <?php
+    $BDD = new PDO('mysql:host=localhost; dbname=jeu; charset=utf8', 'root', '');
+    require 'user.php';
+    $user = new user($BDD);
+    ?>
 </head>
+
 <body>
     <div class="container-fluid">
         <div class="row min-vh-100">
@@ -143,25 +149,26 @@
                     <div class="col-lg-4 col-md-6 col-sm-8 mx-auto bg-white py-3 mb-4">
                         <div class="row">
                             <div class="col-12">
-                                <form>
+                                <form method="post">
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" id="email" class="form-control" required>
+                                        <input type="text" id="email" class="form-control" name="nom" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="password">Password</label>
-                                        <input type="password" id="password" class="form-control" required>
+                                        <input type="password" id="password" class="form-control" name="mdp" required>
                                     </div>
                                     <div class="form-group">
-                                        <div class="form-check">
-                                            <input type="checkbox" id="remember" class="form-check-input">
-                                            <label for="remember" class="form-check-label ml-2">Remember Me</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-outline-dark">Login</button>
+                                        <button type="submit" class="btn btn-outline-dark" name="login">Login</button>
                                     </div>
                                 </form>
+                                <?php 
+                                    if(isset($_POST['login'])){
+                                        $error = $user->verifUserConnect($_POST['nom'], $_POST['mdp']); ?>
+                                    <div><span><?php $user->errorGestion($error); ?></span></div>
+                                    
+                                    <?php }   ?>
+                                
                             </div>
                         </div>
                     </div>
@@ -282,10 +289,11 @@
                 <!-- Footer -->
             </div>
 
-    </div>
+        </div>
 
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
 </body>
+
 </html>

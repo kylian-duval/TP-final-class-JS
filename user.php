@@ -1,4 +1,5 @@
 <?php
+session_start();
 class user
 {
     private $_email;
@@ -11,35 +12,24 @@ class user
 
 
 
-public function __construct($BDD)
-{
-    $this->_BDD = $BDD;
-}
-
-    public function verifUserConnect()
+    public function __construct($BDD)
     {
-        if (filter_var($this->_email, FILTER_VALIDATE_EMAIL)) {
-            if (!empty($this->_mdp)) {
-                $bdd = new PDO('mysql:host=localhost; dbname=film; charset=utf8', 'root', '');
-                $request = $bdd->prepare("SELECT * FROM user WHERE email = ? AND password = ?");
-                $request->execute(array($this->_email, $this->_mdp));
-                $userExist = $request->rowCount();
+        $this->_BDD = $BDD;
+    }
 
-                if ($userExist == 1) {
-                    $data = $request->fetch();
-                    session_start();
-                    $_SESSION['logged'] = true;
-                    $_SESSION['id'] = $data['id_user'];
-                    $_SESSION['droits'] = $data['droit'];
-                    return "succesConnect";
-                } else {
-                    return "userDoesntExist";
-                }
-            } else {
-                return "noPassword";
-            }
+    public function verifUserConnect($speudo, $Mdp)
+    {
+        $request = $this->_BDD->prepare("SELECT * FROM user WHERE Nom_user = ? AND Mdp = ?");
+        $request->execute(array($speudo, $Mdp));
+        $userExist = $request->rowCount();
+
+        if ($userExist == 1) {
+            $data = $request->fetch();
+            $_SESSION['id'] = $data['id_user'];
+            $_SESSION['droits'] = $data['Admin'];
+            return "succesConnect";
         } else {
-            return "invalidMail";
+            return "userDoesntExist";
         }
     }
 
@@ -49,14 +39,14 @@ public function __construct($BDD)
         if ($mdp == $confMdp) {
             $Nom = $speudo;
             $vérifNam = $this->_BDD->prepare("SELECT * FROM `user` WHERE `Nom_user` = ?");
-           $vérifNam->execute(array($Nom));
-           $userExist = $vérifNam->rowCount();
-           if ($userExist == 1) {
-               return "mailUsed";
+            $vérifNam->execute(array($Nom));
+            $userExist = $vérifNam->rowCount();
+            if ($userExist == 1) {
+                return "mailUsed";
             } else {
                 $requeteInscription = $this->_BDD->query("INSERT INTO `user`(`Nom_user`, `Mdp`, `Admin`) VALUES ('$Nom ', '$mdp' ,'FALSE')");
-                return "succesRegister"; 
-           }
+                return "succesRegister";
+            }
         } else {
             return "mdpDifferents";
         }
