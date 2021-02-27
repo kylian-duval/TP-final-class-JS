@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="fr">
+<?php require 'user.php' ?>
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>E-Commerce Template</title>
 
@@ -15,6 +16,7 @@
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <div class="container-fluid">
 
@@ -35,14 +37,31 @@
                                 </ul> -->
                             </div>
                             <div class="col-auto">
-                                <ul class="top-nav">
-                                    <li>
-                                        <a href="register.php"><i class="fas fa-user-edit mr-2"></i>Register</a>
-                                    </li>
-                                    <li>
-                                        <a href="login.php"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
-                                    </li>
-                                </ul>
+                                <form action="" method="post">
+                                    <ul class="top-nav">
+                                        <?php if (!isset($_SESSION['id'])) { ?>
+                                            <li>
+                                                <a href="register.php"><i class="fas fa-user-edit mr-2"></i>Register</a>
+                                            </li>
+                                            <li>
+                                                <a href="login.php"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
+                                            </li>
+                                        <?php  } else { ?>
+                                            <li>
+
+                                            </li>
+                                            <li>
+
+                                                <button name=déco class=deco><i class="fas fa-sign-in-alt mr-2"></i>déconnection</button>
+
+                                            </li>
+                                        <?php } ?>
+                                    </ul>
+                                </form>
+                                <?php if (isset($_POST['déco'])) {
+                                    session_destroy();
+                                    echo  '<meta http-equiv = "refresh" content = "0">' ;
+                                } ?>
                             </div>
                         </div>
                     </div>
@@ -53,7 +72,10 @@
                         <div class="row">
                             <div class="col-lg-auto">
                                 <div class="site-logo text-center text-lg-left">
-                                    <a href="index.php">jeux</a>
+                                    <a href="index.php">jeux <?php if (isset($_SESSION['id'])) {
+                                                                    echo $_SESSION['id'];
+                                                                } ?>
+                                    </a>
                                 </div>
                             </div>
                             <div class="col-lg-auto text-center text-lg-left header-item-holder">
@@ -579,11 +601,11 @@
 
             <div class="col-12 align-self-end">
                 <!-- Footer -->
-               <footer class="row">
-                   <div class="col-12 bg-dark text-white pb-3 pt-5">
-                         <div class="row">
-                           <div class="col-lg-2 col-sm-4 text-center text-sm-left mb-sm-0 mb-3">
-                            <div class="row">
+                <footer class="row">
+                    <div class="col-12 bg-dark text-white pb-3 pt-5">
+                        <div class="row">
+                            <div class="col-lg-2 col-sm-4 text-center text-sm-left mb-sm-0 mb-3">
+                                <div class="row">
                                     <div class="col-12">
                                         <div class="footer-logo">
                                             <a href="index.php">E-Commerce</a>
@@ -728,6 +750,7 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
-    
+
 </body>
+
 </html>

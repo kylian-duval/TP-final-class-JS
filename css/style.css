@@ -6,6 +6,11 @@ body {
 a {
     transition: color .2s linear 0s;
 }
+.deco{
+    background-color: transparent;
+    color: white;
+    border-color: transparent;
+}
 
 .top-nav {
     margin: 0;
