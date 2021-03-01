@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 26 fév. 2021 à 17:55
+-- Généré le :  lun. 01 mars 2021 à 19:26
 -- Version du serveur :  5.7.17
 -- Version de PHP :  5.6.30
 
@@ -47,6 +47,13 @@ CREATE TABLE `jeux` (
   `Nom` varchar(30) NOT NULL,
   `Image` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `jeux`
+--
+
+INSERT INTO `jeux` (`id_jeux`, `Nom`, `Image`) VALUES
+(1, 'ferferz', 'bhuibh');
 
 -- --------------------------------------------------------
 
@@ -105,7 +112,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT pour la table `jeux`
 --
 ALTER TABLE `jeux`
-  MODIFY `id_jeux` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jeux` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
