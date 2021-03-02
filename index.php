@@ -52,7 +52,7 @@
                                             </li>
                                             <li>
 
-                                                <button name=déco class=deco><i class="fas fa-sign-in-alt mr-2"></i>déconnection</button>
+                                                <button name=déco class=deco><i class="fas fa-sign-in-alt mr-2"></i>Déconnection</button>
 
                                             </li>
                                         <?php } ?>

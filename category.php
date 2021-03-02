@@ -54,7 +54,7 @@ $BDD = new PDO('mysql:host=localhost; dbname=tpjeu; charset=utf8', 'root', '');
                                             </li>
                                             <li>
 
-                                                <button name=déco class=deco><i class="fas fa-sign-in-alt mr-2"></i>déconnection</button>
+                                                <button name=déco class=deco><i class="fas fa-sign-in-alt mr-2"></i>Déconnection</button>
 
                                             </li>
                                         <?php } ?>
@@ -74,7 +74,7 @@ $BDD = new PDO('mysql:host=localhost; dbname=tpjeu; charset=utf8', 'root', '');
                         <div class="row">
                             <div class="col-lg-auto">
                                 <div class="site-logo text-center text-lg-left">
-                                    <a href="index.php">E-Commerce</a>
+                                    <a href="index.php">Jeux paradise</a>
                                 </div>
                             </div>
                             <div class="col-lg-5 mx-auto mt-4 mt-lg-0">
@@ -252,7 +252,6 @@ $BDD = new PDO('mysql:host=localhost; dbname=tpjeu; charset=utf8', 'root', '');
                                         <h4>Who are we?</h4>
                                     </div>
                                     <div class="col-12 text-justify">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam imperdiet vel ligula vel sodales. Aenean vel ullamcorper purus, ac pharetra arcu. Nam enim velit, ultricies eu orci nec, aliquam efficitur sem. Quisque in sapien a sem vestibulum volutpat at eu nibh. Suspendisse eget est metus. Maecenas mollis quis nisl ac malesuada. Donec gravida tortor massa, vitae semper leo sagittis a. Donec augue turpis, rutrum vitae augue ut, venenatis auctor nulla. Sed posuere at erat in consequat. Nunc congue justo ut ante sodales, bibendum blandit augue finibus.</p>
                                     </div>
                                 </div>
                             </div>
