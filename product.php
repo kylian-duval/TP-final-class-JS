@@ -296,7 +296,7 @@
                                                     <ul class="rating-list mt-3">
                                                         <li>
                                                             <div class="progress">
-                                                                <div class="progress-bar bg-dark" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
+                                                                <div class="progress-bar bg-dark" role="progressbar" style="width: 70%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">70%</div>
                                                             </div>
                                                             <div class="rating-progress-label">
                                                                 5<i class="fas fa-star ml-1"></i>
@@ -353,7 +353,7 @@
                                             <h4>Add Review</h4>
                                         </div>
                                         <div class="col-12">
-                                            <form>
+                                            <form method="post">
                                                 <div class="form-group">
                                                     <textarea class="form-control" placeholder="Give your review"></textarea>
                                                 </div>

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <?php
-    $BDD = new PDO('mysql:host=localhost; dbname=tpjeu; charset=utf8', 'root', '');
+    $BDD = new PDO('mysql:host=localhost; dbname=jeu; charset=utf8', 'root', '');
     require 'user.php';
     $user = new user($BDD);
     ?>
