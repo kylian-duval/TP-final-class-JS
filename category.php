@@ -176,7 +176,7 @@ $BDD = new PDO('mysql:host=localhost; dbname=jeu; charset=utf8', 'root', '');
                                             <div class="col-12 bg-white text-center h-100 product-item">
                                                 <div class="row h-100">
                                                     <div class="col-12 p-0 mb-3">
-                                                        <a href="product.php">
+                                                        <a href="product.php?jeux=<?php echo $donné['id_jeux'] ?>">
                                                             <img src="images/<?php echo $donné['Image'] ?>" class="img-fluid">
                                                         </a>
                                                     </div>

@@ -1,9 +1,13 @@
 <!doctype html>
 <html lang="fr">
+<?php require 'user.php';
+$BDD = new PDO('mysql:host=localhost; dbname=jeu; charset=utf8', 'root', '');
+$user = new user($BDD);
+?>
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Jeux</title>
 
@@ -14,7 +18,9 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+
 </head>
+
 <body>
     <div class="container-fluid">
 
@@ -35,14 +41,31 @@
                                 </ul>
                             </div>
                             <div class="col-auto">
-                                <ul class="top-nav">
-                                    <li>
-                                        <a href="register.php"><i class="fas fa-user-edit mr-2"></i>Register</a>
-                                    </li>
-                                    <li>
-                                        <a href="login.php"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
-                                    </li>
-                                </ul>
+                                <form action="" method="post">
+                                    <ul class="top-nav">
+                                        <?php if (!isset($_SESSION['id'])) { ?>
+                                            <li>
+                                                <a href="register.php"><i class="fas fa-user-edit mr-2"></i>Register</a>
+                                            </li>
+                                            <li>
+                                                <a href="login.php"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
+                                            </li>
+                                        <?php  } else { ?>
+                                            <li>
+
+                                            </li>
+                                            <li>
+
+                                                <button name=déco class=deco><i class="fas fa-sign-in-alt mr-2"></i>Déconnection</button>
+
+                                            </li>
+                                        <?php } ?>
+                                    </ul>
+                                </form>
+                                <?php if (isset($_POST['déco'])) {
+                                    session_destroy();
+                                    echo  '<meta http-equiv = "refresh" content = "0">';
+                                } ?>
                             </div>
                         </div>
                     </div>
@@ -188,12 +211,12 @@
                                 <div class="col-12 border-left border-top sidebar h-100">
                                     <div class="row">
                                         <div class="col-12">
-                                        <span class="detail-price">
-                                            $2,500
-                                        </span>
+                                            <span class="detail-price">
+                                                $2,500
+                                            </span>
                                             <span class="detail-price-old">
-                                            $2,800
-                                        </span>
+                                                $2,800
+                                            </span>
                                         </div>
                                         <div class="col-xl-5 col-md-9 col-sm-3 col-5 mx-auto mt-3">
                                             <div class="form-group">
@@ -264,7 +287,7 @@
 
                                             <p><strong>Thermal Control:</strong> Cryo-Tech v2.0 ensures that 100% of the system's GPU thermal design power is enabled, while also ensuring CPU-intensive games benefit from high performance.</p>
 
-                                            <p><strong>Whisper-quiet:</strong>  The cooling system of the Area-51m is so powerful, virtually no noise is heard while engaged in daily tasks.</p>
+                                            <p><strong>Whisper-quiet:</strong> The cooling system of the Area-51m is so powerful, virtually no noise is heard while engaged in daily tasks.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -355,28 +378,29 @@
                                         <div class="col-12">
                                             <form method="post">
                                                 <div class="form-group">
-                                                    <textarea class="form-control" placeholder="Give your review"></textarea>
+                                                    <textarea class="form-control" placeholder="Give your review" name="message"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="d-flex ratings justify-content-end flex-row-reverse">
-                                                        <input type="radio" value="5" name="rating" id="rating-5"><label
-                                                            for="rating-5"></label>
-                                                        <input type="radio" value="4" name="rating" id="rating-4"><label
-                                                            for="rating-4"></label>
-                                                        <input type="radio" value="3" name="rating" id="rating-3"><label
-                                                            for="rating-3"></label>
-                                                        <input type="radio" value="2" name="rating" id="rating-2"><label
-                                                            for="rating-2"></label>
-                                                        <input type="radio" value="1" name="rating" id="rating-1" checked><label
-                                                            for="rating-1"></label>
+                                                        <input type="radio" value="5" name="note" id="rating-5"><label for="rating-5"></label>
+                                                        <input type="radio" value="4" name="note" id="rating-4"><label for="rating-4"></label>
+                                                        <input type="radio" value="3" name="note" id="rating-3"><label for="rating-3"></label>
+                                                        <input type="radio" value="2" name="note" id="rating-2"><label for="rating-2"></label>
+                                                        <input type="radio" value="1" name="note" id="rating-1" checked><label for="rating-1"></label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <button class="btn btn-outline-dark">Add Review</button>
+                                                    <button class="btn btn-outline-dark" name="avi">Add Review</button>
+                                                    
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
+                                    <?php
+                                    if (isset($_POST['avi'])) {
+                                        $user->commetaire($_SESSION['id'], $_GET['jeux'], $_POST['message'],$_POST['note'] );
+                                    }
+                                    ?>
                                     <!-- Add Review -->
 
                                     <div class="row">
@@ -388,26 +412,54 @@
                                     <!-- Review -->
                                     <div class="row">
                                         <div class="col-12">
-
+                                        <?php
+                                        $idjeu = $_GET['jeux']; 
+                                        $requet = $BDD->query("SELECT user.Nom_user, jeux.id_jeux ,commentaire.Message, commentaire.note FROM user, commentaire, jeux WHERE commentaire.id_user = user.id_user AND commentaire.id_jeu = jeux.id_jeux AND jeux.id_jeux = $idjeu");
+                                        while ($donné = $requet->fetch()) { ?>
+                                        <!--SELECT user.Nom_user, jeux.id_jeux ,commentaire.Message, commentaire.note FROM user, commentaire, jeux WHERE commentaire.id_user = user.id_user AND commentaire.id_jeu = jeux.id_jeux AND jeux.id_jeux = 3 -->
                                             <!-- Comments -->
                                             <div class="col-12 text-justify py-2 mb-3 bg-gray">
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <strong class="mr-2">Steve Rogers</strong>
+                                                        <strong class="mr-2"><?php echo $donné['Nom_user'] ?></strong>
                                                         <small>
+                                                        <?php if($donné['note'] == '1'){?>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="far fa-star"></i>
+                                                            <i class="far fa-star"></i>
+                                                            <i class="far fa-star"></i>
+                                                            <i class="far fa-star"></i>
+                                                        <?php }else if($donné['note'] == '2'){?>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="far fa-star"></i>
+                                                            <i class="far fa-star"></i>
+                                                            <i class="far fa-star"></i>
+                                                        <?php }else if($donné['note'] == '3'){?>
                                                             <i class="fas fa-star"></i>
                                                             <i class="fas fa-star"></i>
                                                             <i class="fas fa-star"></i>
                                                             <i class="far fa-star"></i>
                                                             <i class="far fa-star"></i>
+                                                        <?php }else if($donné['note'] == '4'){?>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="far fa-star"></i>
+                                                        <?php }else if($donné['note'] == '5'){?>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <?php }?>
+
+                                                            
                                                         </small>
                                                     </div>
                                                     <div class="col-12">
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut ullamcorper quam, non congue odio.
-                                                        <br>
-                                                        Fusce ligula augue, faucibus sed neque non, auctor rhoncus enim. Sed nec molestie turpis. Nullam accumsan porttitor rutrum. Curabitur eleifend venenatis volutpat.
-                                                        <br>
-                                                        Aenean faucibus posuere vehicula.
+                                                       <?php echo $donné['Message'] ?>
                                                     </div>
                                                     <div class="col-12">
                                                         <small>
@@ -417,34 +469,7 @@
                                                 </div>
                                             </div>
                                             <!-- Comments -->
-
-                                            <!-- Comments -->
-                                            <div class="col-12 text-justify py-2 mb-3 bg-gray">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <strong class="mr-2">Bucky Barns</strong>
-                                                        <small>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                        </small>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut ullamcorper quam, non congue odio.
-                                                        <br>
-                                                        Aenean faucibus posuere vehicula.
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <small>
-                                                            <i class="fas fa-clock mr-2"></i>5 hours ago
-                                                        </small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Comments -->
-
+                                            <?php } ?>
                                         </div>
                                     </div>
                                     <!-- Review -->
@@ -703,4 +728,5 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
 </body>
+
 </html>

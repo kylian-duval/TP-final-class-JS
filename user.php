@@ -55,6 +55,11 @@ class user
     {
     }
 
+    public function commetaire($id_user, $id_jeux, $message, $note)
+    {
+        $this->_BDD->query("INSERT INTO `commentaire`(`id_user`, `id_jeu`, `Message`, `note`) VALUES ('$id_user','$id_jeux','$message', $note)");    
+    }
+
     public function errorGestion($erreur)
     {
         if ($erreur == "userDoesntExist") {
