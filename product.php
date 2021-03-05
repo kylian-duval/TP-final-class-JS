@@ -472,16 +472,24 @@ $user = new user($BDD);
                                                 </div>
                                                 <div class="form-group">
                                                     <button class="btn btn-outline-dark" name="avi">Add Review</button>
-
                                                 </div>
                                             </form>
+                                            <?php
+                                            if(!isset($_SESSION['id'])){
+                                                echo '<span> il faut etre connecter pour pouvoir commentait ou évaluer se jeu </span>';
+                                            }else{
+                                                if (isset($_POST['avi'])) {
+                                                    // $user->commetaire($_SESSION['id'], $_GET['jeux'], $_POST['message']);
+                                                     
+                                                 }
+                                            }
+
+
+
+                                            ?>
                                         </div>
                                     </div>
-                                    <?php
-                                    if (isset($_POST['avi'])) {
-                                        $user->commetaire($_SESSION['id'], $_GET['jeux'], $_POST['message']);
-                                    }
-                                    ?>
+            
                                     <!-- Add Review -->
 
                                     <div class="row">
