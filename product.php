@@ -350,7 +350,7 @@ $user = new user($BDD);
                                                 <div class="col">
                                                     <ul class="rating-list mt-3">
                                                         <?php if ($totalNote == '0') { ?>
-                                                            <li> 
+                                                            <li>
                                                                 <div class="progress">
                                                                     <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">0%</div>
                                                                 </div>
@@ -383,7 +383,7 @@ $user = new user($BDD);
                                                                 </div>
                                                             </li>
                                                             <li>
-                                                                
+
                                                                 <div class="progress">
                                                                     <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="3" aria-valuemin="3" aria-valuemax="100">0%</div>
                                                                 </div>
@@ -437,9 +437,6 @@ $user = new user($BDD);
                                                                     1<i class="fas fa-star ml-1"></i>
                                                                 </div>
                                                             </li>
-
-
-
                                                         <?php } ?>
                                                     </ul>
                                                 </div>
