@@ -340,7 +340,7 @@ $user = new user($BDD);
 
                                                         ?>
                                                         <div class="col-12 average-rating">
-                                                            <?php echo $moyenne; ?>
+                                                            <?php echo number_format($moyenne,1) ; ?>
                                                         </div>
                                                         <div class="col-12">
                                                             sur <?php echo $totalNote; ?> avis
@@ -395,7 +395,7 @@ $user = new user($BDD);
                                                             <li>
                                                                 <?php $cinqe = ($cinqe * 100) / $totalNote ?>
                                                                 <div class="progress">
-                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $cinqe ?>%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"><?php echo $cinqe ?>%</div>
+                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $cinqe ?>%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"><?php echo number_format($cinqe,2)?>%</div>
                                                                 </div>
                                                                 <div class="rating-progress-label">
                                                                     5<i class="fas fa-star ml-1"></i>
@@ -404,7 +404,7 @@ $user = new user($BDD);
                                                             <li>
                                                                 <?php $quatre = ($quatre * 100) / $totalNote ?>
                                                                 <div class="progress">
-                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $quatre ?>%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><?php echo $quatre ?>%</div>
+                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $quatre ?>%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><?php echo number_format($quatre,2)?>%</div>
                                                                 </div>
                                                                 <div class="rating-progress-label">
                                                                     4<i class="fas fa-star ml-1"></i>
@@ -413,7 +413,7 @@ $user = new user($BDD);
                                                             <li>
                                                                 <?php $troi = ($troi * 100) / $totalNote ?>
                                                                 <div class="progress">
-                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $troi ?>%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"><?php echo $troi ?>%</div>
+                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $troi ?>%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"><?php echo number_format($troi,2) ?>%</div>
                                                                 </div>
                                                                 <div class="rating-progress-label">
                                                                     3<i class="fas fa-star ml-1"></i>
@@ -422,7 +422,7 @@ $user = new user($BDD);
                                                             <li>
                                                                 <?php $deux = ($deux * 100) / $totalNote ?>
                                                                 <div class="progress">
-                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $deux ?>%;" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"><?php echo $deux ?>%</div>
+                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $deux ?>%;" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"><?php echo number_format($deux,2)?>%</div>
                                                                 </div>
                                                                 <div class="rating-progress-label">
                                                                     2<i class="fas fa-star ml-1"></i>
@@ -431,7 +431,7 @@ $user = new user($BDD);
                                                             <li>
                                                                 <?php $un = ($un * 100) / $totalNote ?>
                                                                 <div class="progress">
-                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $un ?>%;" aria-valuenow="3" aria-valuemin="3" aria-valuemax="100"><?php echo $un ?>%</div>
+                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $un ?>%;" aria-valuenow="3" aria-valuemin="3" aria-valuemax="100"><?php echo number_format($un,2) ?>%</div>
                                                                 </div>
                                                                 <div class="rating-progress-label">
                                                                     1<i class="fas fa-star ml-1"></i>
@@ -476,11 +476,18 @@ $user = new user($BDD);
                                             </form>
                                             <?php
                                             if(!isset($_SESSION['id'])){
-                                                echo '<span> il faut etre connecter pour pouvoir commentait ou évaluer se jeu </span>';
+                                                echo '<span style="color:red"> il faut etre connecter pour pouvoir commentait ou évaluer se jeu </span>';
                                             }else{
+                                                $verifNote = $BDD->prepare("SELECT * FROM `note` WHERE `id_user`= ? AND `id_jeu`= ?");
+                                                $verifNote->execute(array($_SESSION['id'], $idjeu));
+                                                $donnerverifNote = $verifNote->rowCount();
                                                 if (isset($_POST['avi'])) {
-                                                    // $user->commetaire($_SESSION['id'], $_GET['jeux'], $_POST['message']);
-                                                     
+                                                    $user->commetaire($_SESSION['id'], $_GET['jeux'], $_POST['message']);
+                                                     if($donnerverifNote == 0){
+                                                        $user->note($_SESSION['id'],$_GET['jeux'],$_POST['note']);
+                                                     }else{
+                                                        echo '<span style="color:red"> vous avais deja évaluer se jeu </span>';
+                                                     }
                                                  }
                                             }
 

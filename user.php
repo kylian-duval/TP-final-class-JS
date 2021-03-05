@@ -57,7 +57,12 @@ class user
 
     public function commetaire($id_user, $id_jeux, $message)
     {
-        $this->_BDD->query("INSERT INTO `commentaire`(`id_user`, `id_jeu`, `Message`) VALUES ('$id_user','$id_jeux','$message')");    
+        $this->_BDD->query("INSERT INTO `commentaire`(`id_user`, `id_jeu`, `Message`) VALUES ('$id_user','$id_jeux','$message')");
+    }
+
+    public function note($id_user, $id_jeux, $note)
+    {
+        $this->_BDD->query("INSERT INTO `note`(`id_user`, `id_jeu`, `note`) VALUES ($id_user,$id_jeux,$note)");
     }
 
     public function errorGestion($erreur)
