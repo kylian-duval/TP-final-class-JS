@@ -55,9 +55,9 @@ class user
     {
     }
 
-    public function commetaire($id_user, $id_jeux, $message, $note)
+    public function commetaire($id_user, $id_jeux, $message)
     {
-        $this->_BDD->query("INSERT INTO `commentaire`(`id_user`, `id_jeu`, `Message`, `note`) VALUES ('$id_user','$id_jeux','$message', $note)");    
+        $this->_BDD->query("INSERT INTO `commentaire`(`id_user`, `id_jeu`, `Message`) VALUES ('$id_user','$id_jeux','$message')");    
     }
 
     public function errorGestion($erreur)

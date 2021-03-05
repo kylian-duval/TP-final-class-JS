@@ -307,56 +307,140 @@ $user = new user($BDD);
                                             <div class="row">
                                                 <div class="col-sm-4 text-center">
                                                     <div class="row">
+                                                        <?php $moyenne = 0;
+                                                        $idjeu = $_GET['jeux'];
+                                                        $totalNote = 0;
+                                                        $un = 0;
+                                                        $deux = 0;
+                                                        $troi = 0;
+                                                        $quatre = 0;
+                                                        $cinqe = 0;
+
+                                                        $donnerCal = $BDD->query("SELECT `note` FROM `note` WHERE `id_jeu` = $idjeu");
+                                                        while ($donnéMoy = $donnerCal->fetch()) {
+                                                            $moyenne = $moyenne + $donnéMoy['note'];
+                                                            $totalNote++;
+                                                            if ($donnéMoy['note'] == '1') {
+                                                                $un++;
+                                                            } else if ($donnéMoy['note'] == '2') {
+                                                                $deux++;
+                                                            } else if ($donnéMoy['note'] == '3') {
+                                                                $troi++;
+                                                            } else if ($donnéMoy['note'] == '4') {
+                                                                $quatre++;
+                                                            } else if ($donnéMoy['note'] == '5') {
+                                                                $cinqe++;
+                                                            }
+                                                        }
+                                                        if ($totalNote == '0') {
+                                                            $moyenne = $totalNote;
+                                                        } else if ($totalNote > '0') {
+                                                            $moyenne = $moyenne / $totalNote;
+                                                        }
+
+                                                        ?>
                                                         <div class="col-12 average-rating">
-                                                            4.1
+                                                            <?php echo $moyenne; ?>
                                                         </div>
                                                         <div class="col-12">
-                                                            of 100 reviews
+                                                            sur <?php echo $totalNote; ?> avis
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <ul class="rating-list mt-3">
-                                                        <li>
-                                                            <div class="progress">
-                                                                <div class="progress-bar bg-dark" role="progressbar" style="width: 70%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">70%</div>
-                                                            </div>
-                                                            <div class="rating-progress-label">
-                                                                5<i class="fas fa-star ml-1"></i>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="progress">
-                                                                <div class="progress-bar bg-dark" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
-                                                            </div>
-                                                            <div class="rating-progress-label">
-                                                                4<i class="fas fa-star ml-1"></i>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="progress">
-                                                                <div class="progress-bar bg-dark" role="progressbar" style="width: 15%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">15%</div>
-                                                            </div>
-                                                            <div class="rating-progress-label">
-                                                                3<i class="fas fa-star ml-1"></i>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="progress">
-                                                                <div class="progress-bar bg-dark" role="progressbar" style="width: 7%;" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100">7%</div>
-                                                            </div>
-                                                            <div class="rating-progress-label">
-                                                                2<i class="fas fa-star ml-1"></i>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="progress">
-                                                                <div class="progress-bar bg-dark" role="progressbar" style="width: 3%;" aria-valuenow="3" aria-valuemin="3" aria-valuemax="100">3%</div>
-                                                            </div>
-                                                            <div class="rating-progress-label">
-                                                                1<i class="fas fa-star ml-1"></i>
-                                                            </div>
-                                                        </li>
+                                                        <?php if ($totalNote == '0') { ?>
+                                                            <li> 
+                                                                <div class="progress">
+                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                                                </div>
+                                                                <div class="rating-progress-label">
+                                                                    5<i class="fas fa-star ml-1"></i>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="progress">
+                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                                                </div>
+                                                                <div class="rating-progress-label">
+                                                                    4<i class="fas fa-star ml-1"></i>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="progress">
+                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                                                </div>
+                                                                <div class="rating-progress-label">
+                                                                    3<i class="fas fa-star ml-1"></i>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="progress">
+                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                                                </div>
+                                                                <div class="rating-progress-label">
+                                                                    2<i class="fas fa-star ml-1"></i>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                
+                                                                <div class="progress">
+                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="3" aria-valuemin="3" aria-valuemax="100">0%</div>
+                                                                </div>
+                                                                <div class="rating-progress-label">
+                                                                    1<i class="fas fa-star ml-1"></i>
+                                                                </div>
+                                                            </li>
+                                                        <?php } else { ?>
+                                                            <li>
+                                                                <?php $cinqe = ($cinqe * 100) / $totalNote ?>
+                                                                <div class="progress">
+                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $cinqe ?>%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"><?php echo $cinqe ?>%</div>
+                                                                </div>
+                                                                <div class="rating-progress-label">
+                                                                    5<i class="fas fa-star ml-1"></i>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <?php $quatre = ($quatre * 100) / $totalNote ?>
+                                                                <div class="progress">
+                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $quatre ?>%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><?php echo $quatre ?>%</div>
+                                                                </div>
+                                                                <div class="rating-progress-label">
+                                                                    4<i class="fas fa-star ml-1"></i>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <?php $troi = ($troi * 100) / $totalNote ?>
+                                                                <div class="progress">
+                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $troi ?>%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"><?php echo $troi ?>%</div>
+                                                                </div>
+                                                                <div class="rating-progress-label">
+                                                                    3<i class="fas fa-star ml-1"></i>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <?php $deux = ($deux * 100) / $totalNote ?>
+                                                                <div class="progress">
+                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $deux ?>%;" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"><?php echo $deux ?>%</div>
+                                                                </div>
+                                                                <div class="rating-progress-label">
+                                                                    2<i class="fas fa-star ml-1"></i>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <?php $un = ($un * 100) / $totalNote ?>
+                                                                <div class="progress">
+                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $un ?>%;" aria-valuenow="3" aria-valuemin="3" aria-valuemax="100"><?php echo $un ?>%</div>
+                                                                </div>
+                                                                <div class="rating-progress-label">
+                                                                    1<i class="fas fa-star ml-1"></i>
+                                                                </div>
+                                                            </li>
+
+
+
+                                                        <?php } ?>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -391,14 +475,14 @@ $user = new user($BDD);
                                                 </div>
                                                 <div class="form-group">
                                                     <button class="btn btn-outline-dark" name="avi">Add Review</button>
-                                                    
+
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                     <?php
                                     if (isset($_POST['avi'])) {
-                                        $user->commetaire($_SESSION['id'], $_GET['jeux'], $_POST['message'],$_POST['note'] );
+                                        $user->commetaire($_SESSION['id'], $_GET['jeux'], $_POST['message']);
                                     }
                                     ?>
                                     <!-- Add Review -->
@@ -412,63 +496,63 @@ $user = new user($BDD);
                                     <!-- Review -->
                                     <div class="row">
                                         <div class="col-12">
-                                        <?php
-                                        $idjeu = $_GET['jeux']; 
-                                        $requet = $BDD->query("SELECT user.Nom_user, jeux.id_jeux ,commentaire.Message, commentaire.note FROM user, commentaire, jeux WHERE commentaire.id_user = user.id_user AND commentaire.id_jeu = jeux.id_jeux AND jeux.id_jeux = $idjeu");
-                                        while ($donné = $requet->fetch()) { ?>
-                                        <!--SELECT user.Nom_user, jeux.id_jeux ,commentaire.Message, commentaire.note FROM user, commentaire, jeux WHERE commentaire.id_user = user.id_user AND commentaire.id_jeu = jeux.id_jeux AND jeux.id_jeux = 3 -->
-                                            <!-- Comments -->
-                                            <div class="col-12 text-justify py-2 mb-3 bg-gray">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <strong class="mr-2"><?php echo $donné['Nom_user'] ?></strong>
-                                                        <small>
-                                                        <?php if($donné['note'] == '1'){?>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                        <?php }else if($donné['note'] == '2'){?>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                        <?php }else if($donné['note'] == '3'){?>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                        <?php }else if($donné['note'] == '4'){?>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="far fa-star"></i>
-                                                        <?php }else if($donné['note'] == '5'){?>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <?php }?>
+                                            <?php
 
-                                                            
-                                                        </small>
-                                                    </div>
-                                                    <div class="col-12">
-                                                       <?php echo $donné['Message'] ?>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <small>
-                                                            <i class="fas fa-clock mr-2"></i>5 hours ago
-                                                        </small>
+                                            $requet = $BDD->query("SELECT user.Nom_user, jeux.id_jeux ,commentaire.Message, note.note FROM user, commentaire, jeux, note WHERE note.id_user= user.id_user AND note.id_jeu = jeux.id_jeux AND  commentaire.id_user = user.id_user AND commentaire.id_jeu = jeux.id_jeux AND jeux.id_jeux = $idjeu");
+                                            while ($donné = $requet->fetch()) { ?>
+                                                <!--SELECT user.Nom_user, jeux.id_jeux ,commentaire.Message, commentaire.note FROM user, commentaire, jeux WHERE commentaire.id_user = user.id_user AND commentaire.id_jeu = jeux.id_jeux AND jeux.id_jeux = $idjeu-->
+                                                <!-- Comments -->
+                                                <div class="col-12 text-justify py-2 mb-3 bg-gray">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <strong class="mr-2"><?php echo $donné['Nom_user'] ?></strong>
+                                                            <small>
+                                                                <?php if ($donné['note'] == '1') { ?>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="far fa-star"></i>
+                                                                    <i class="far fa-star"></i>
+                                                                    <i class="far fa-star"></i>
+                                                                    <i class="far fa-star"></i>
+                                                                <?php } else if ($donné['note'] == '2') { ?>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="far fa-star"></i>
+                                                                    <i class="far fa-star"></i>
+                                                                    <i class="far fa-star"></i>
+                                                                <?php } else if ($donné['note'] == '3') { ?>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="far fa-star"></i>
+                                                                    <i class="far fa-star"></i>
+                                                                <?php } else if ($donné['note'] == '4') { ?>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="far fa-star"></i>
+                                                                <?php } else if ($donné['note'] == '5') { ?>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                <?php } ?>
+
+
+                                                            </small>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <?php echo $donné['Message'] ?>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <small>
+                                                                <i class="fas fa-clock mr-2"></i>5 hours ago
+                                                            </small>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <!-- Comments -->
+                                                <!-- Comments -->
                                             <?php } ?>
                                         </div>
                                     </div>
