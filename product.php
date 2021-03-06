@@ -76,7 +76,7 @@ $user = new user($BDD);
                         <div class="row">
                             <div class="col-lg-auto">
                                 <div class="site-logo text-center text-lg-left">
-                                    <a href="index.php">E-Commerce</a>
+                                    <a href="index.php">Jeux</a>
                                 </div>
                             </div>
                             <div class="col-lg-5 mx-auto mt-4 mt-lg-0">
@@ -186,24 +186,23 @@ $user = new user($BDD);
                             <!-- Product Images -->
 
                             <!-- Product Info -->
+                            <?php $requet = $BDD->query("SELECT * FROM `jeux` WHERE 1");
+                                    while ($donné = $requet->fetch()) { ?>
                             <div class="col-lg-5 col-md-9">
                                 <div class="col-12 product-name large">
-                                    Area 51M Gaming Laptop Welcome to A New ERA with 9TH GEN Intel CORE I9-9900K NVIDIA GEFORCE RTX 2080 8GB GDDR6 17.3" FHD 144HZ AG G-SYNC TOBII EYETRACKING (1TB SSD RAID|32GB RAM|10 PRO)
-                                    <small>By <a href="#">Dell</a></small>
+                                <?php echo $donné['id_jeux'] ?> <?php echo $donné['Nom'] ?>
+                                    <small>By <a href="">Dell</a></small>
                                 </div>
                                 <div class="col-12 px-0">
                                     <hr>
                                 </div>
                                 <div class="col-12">
                                     <ul>
-                                        <li>Processor 8th Generation Intel Core i9-8950HK (6-Core, 12MB Cache, Overclocking up to 5.0GHz)</li>
-                                        <li>Memory 32GB DDR4-2666MHz, 2x16GB Ram Speed Gaming Performance</li>
-                                        <li>Hard Drive 1TB SSD RAID 0 (2x 512GB PCIe NVME M.2 SSDs) + 1TB (+8GB SSHD) Hybrid Drive</li>
-                                        <li>17.3" Full HD display 1920 x 1080 resolution boasts impressive color and clarity. IPS technology for wide viewing angles.</li>
-                                        <li>Video Card NVIDIA® GeForce® RTX 2080 with 8GB GDDR6</li>
+                                        
                                     </ul>
                                 </div>
                             </div>
+                            <?php } ?>
                             <!-- Product Info -->
 
                             <!-- Sidebar -->
@@ -212,20 +211,12 @@ $user = new user($BDD);
                                     <div class="row">
                                         <div class="col-12">
                                             <span class="detail-price">
-                                                $2,500
                                             </span>
                                             <span class="detail-price-old">
-                                                $2,800
                                             </span>
                                         </div>
                                         <div class="col-xl-5 col-md-9 col-sm-3 col-5 mx-auto mt-3">
                                             <div class="form-group">
-                                                <label for="qty">Quantity</label>
-                                                <input type="number" id="qty" min="1" value="1" class="form-control" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 mt-3">
-                                            <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
                                         </div>
                                         <div class="col-12 mt-3">
                                             <button class="btn btn-outline-secondary btn-sm" type="button"><i class="fas fa-heart mr-2"></i>Add to wishlist</button>
@@ -486,7 +477,7 @@ $user = new user($BDD);
                                                      if($donnerverifNote == 0){
                                                         $user->note($_SESSION['id'],$_GET['jeux'],$_POST['note']);
                                                      }else{
-                                                        echo '<span style="color:red"> vous avais deja évaluer se jeu </span>';
+                                                        echo '<span style="color:red"> vous avez déja évaluer ce jeu </span>';
                                                      }
                                                  }
                                             }
@@ -663,7 +654,6 @@ $user = new user($BDD);
                                                     </span>
                                                 </div>
                                                 <div class="col-12 mb-3 align-self-end">
-                                                    <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
                                                 </div>
                                             </div>
                                         </div>

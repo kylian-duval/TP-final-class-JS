@@ -32,10 +32,10 @@
                             <div class="col-auto mr-auto">
                                 <ul class="top-nav">
                                     <li>
-                                        <a href="tel:+123-456-7890"><i class="fa fa-phone-square mr-2"></i>+123-456-7890</a>
+                                        <a href="tel:+123-456-7890"><i class="fa fa-phone-square mr-2"></i></a>
                                     </li>
                                     <li>
-                                        <a href="mailto:mail@ecom.com"><i class="fa fa-envelope mr-2"></i>mail@ecom.com</a>
+                                        <a href="mailto:mail@ecom.com"><i class="fa fa-envelope mr-2"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -58,7 +58,7 @@
                         <div class="row">
                             <div class="col-lg-auto">
                                 <div class="site-logo text-center text-lg-left">
-                                    <a href="index.php">E-Commerce</a>
+                                    <a href="index.php">Jeux</a>
                                 </div>
                             </div>
                             <div class="col-lg-5 mx-auto mt-4 mt-lg-0">
@@ -151,7 +151,7 @@
                             <div class="col-12">
                                 <form method="post">
                                     <div class="form-group">
-                                        <label for="email">Email</label>
+                                        <label for="email">Nom d'utilisateur</label>
                                         <input type="text" id="email" class="form-control" name="nom" required>
                                     </div>
                                     <div class="form-group">
@@ -186,7 +186,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="footer-logo">
-                                            <a href="index.php">E-Commerce</a>
+                                            <a href="index.php">Jeux</a>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -210,7 +210,7 @@
                                         <h4>Who are we?</h4>
                                     </div>
                                     <div class="col-12 text-justify">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam imperdiet vel ligula vel sodales. Aenean vel ullamcorper purus, ac pharetra arcu. Nam enim velit, ultricies eu orci nec, aliquam efficitur sem. Quisque in sapien a sem vestibulum volutpat at eu nibh. Suspendisse eget est metus. Maecenas mollis quis nisl ac malesuada. Donec gravida tortor massa, vitae semper leo sagittis a. Donec augue turpis, rutrum vitae augue ut, venenatis auctor nulla. Sed posuere at erat in consequat. Nunc congue justo ut ante sodales, bibendum blandit augue finibus.</p>
+                                        <p></p>
                                     </div>
                                 </div>
                             </div>

@@ -74,7 +74,7 @@ $BDD = new PDO('mysql:host=localhost; dbname=jeu; charset=utf8', 'root', '');
                         <div class="row">
                             <div class="col-lg-auto">
                                 <div class="site-logo text-center text-lg-left">
-                                    <a href="index.php">Jeux paradise</a>
+                                    <a href="index.php">Jeux</a>
                                 </div>
                             </div>
                             <div class="col-lg-5 mx-auto mt-4 mt-lg-0">
@@ -228,7 +228,7 @@ $BDD = new PDO('mysql:host=localhost; dbname=jeu; charset=utf8', 'root', '');
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="footer-logo">
-                                            <a href="index.php">E-Commerce</a>
+                                            <a href="index.php"></a>
                                         </div>
                                     </div>
                                     <div class="col-12">

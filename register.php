@@ -18,7 +18,7 @@
 </head>
 <body>
 <?php 
-$BDD = new PDO('mysql:host=localhost; dbname=tpjeu; charset=utf8', 'root', '');
+$BDD = new PDO('mysql:host=localhost; dbname=jeu; charset=utf8', 'root', '');
 $user = new user($BDD) ;
 
 
