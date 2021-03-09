@@ -123,10 +123,16 @@
                                 </form>
                                 <?php
                                 if (isset($_POST['login'])) {
-                                    $error = $user->verifUserConnect($_POST['nom'], $_POST['mdp']); ?>
+                                    $error = $user->verifUserConnect($_POST['nom'], $_POST['mdp']); 
+                                    echo  '<meta http-equiv = "refresh" content = "1">';
+                                    ?>
+                                    
                                     <div><span><?php $user->errorGestion($error); ?></span></div>
 
-                                <?php }   ?>
+                                <?php }  ?>
+                                                
+                               
+
 
                             </div>
                         </div>
