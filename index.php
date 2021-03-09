@@ -1,12 +1,14 @@
 <!doctype html>
 <html lang="fr">
-<?php require 'user.php' ?>
+<?php require 'user.php';
+$BDD = new PDO('mysql:host=192.168.65.227; dbname=jeu; charset=utf8', 'kiki', 'kiki');
+?>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
+    <title>acceuil</title>
 
     <link href="//fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700" rel="stylesheet">
@@ -27,14 +29,7 @@
                     <div class="col-12 bg-dark py-2 d-md-block d-none">
                         <div class="row">
                             <div class="col-auto mr-auto">
-                                <!-- <ul class="top-nav">
-                                    <li>
-                                        <a href="tel:+123-456-7890"><i class="fa fa-phone-square mr-2"></i>+123-456-7890</a>
-                                    </li>
-                                    <li>
-                                        <a href="mailto:mail@ecom.com"><i class="fa fa-envelope mr-2"></i>mail@ecom.com</a>
-                                    </li>
-                                </ul> -->
+
                             </div>
                             <div class="col-auto">
                                 <form action="" method="post">
@@ -47,8 +42,15 @@
                                                 <a href="login.php"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
                                             </li>
                                         <?php  } else { ?>
-                                            <li>
-
+                                            <li class="nav-item dropdown">
+                                                <!-- <!-- <a class= deco href="#" id="electronics" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Electronics</a>
+                                                <div class="dropdown-menu" aria-labelledby="electronics">
+                                                    <a class="dropdown-item" href="category.php">Computers</a>
+                                                    <a class="dropdown-item" href="category.php">Mobile Phones</a>
+                                                    <a class="dropdown-item" href="category.php">Television Sets</a>
+                                                    <a class="dropdown-item" href="category.php">DSLR Cameras</a>
+                                                    <a class="dropdown-item" href="category.php">Projectors</a> 
+                                                </div> -->
                                             </li>
                                             <li>
 
@@ -60,7 +62,7 @@
                                 </form>
                                 <?php if (isset($_POST['déco'])) {
                                     session_destroy();
-                                    echo  '<meta http-equiv = "refresh" content = "0">' ;
+                                    echo  '<meta http-equiv = "refresh" content = "0">';
                                 } ?>
                             </div>
                         </div>
@@ -72,20 +74,8 @@
                         <div class="row">
                             <div class="col-lg-auto">
                                 <div class="site-logo text-center text-lg-left">
-                                    <a href="index.php">jeux <?php if (isset($_SESSION['id'])) {
-                                                                    echo $_SESSION['id'];
-                                                                } ?>
-                                    </a>
+                                    <a href="index.php">Jeux</a>
                                 </div>
-                            </div>
-                            <div class="col-lg-auto text-center text-lg-left header-item-holder">
-                                <a href="#" class="header-item">
-                                    <i class="fas fa-heart mr-2"></i><span id="header-favorite">0</span>
-                                </a>
-                                <a href="cart.php" class="header-item">
-                                    <i class="fas fa-shopping-bag mr-2"></i><span id="header-qty" class="mr-3">2</span>
-                                    <i class="fas fa-money-bill-wave mr-2"></i><span id="header-price">$4,000</span>
-                                </a>
                             </div>
                         </div>
 
@@ -100,7 +90,7 @@
                                         <li class="nav-item active">
                                             <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                                         </li>
-                                        <li class="nav-item dropdown">
+                                        <!-- <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" id="electronics" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Electronics</a>
                                             <div class="dropdown-menu" aria-labelledby="electronics">
                                                 <a class="dropdown-item" href="category.php">Computers</a>
@@ -129,7 +119,7 @@
                                                 <a class="dropdown-item" href="category.php">Children's</a>
                                                 <a class="dropdown-item" href="category.php">Non-Fiction</a>
                                             </div>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                             </nav>
@@ -146,455 +136,41 @@
                 <!-- Main Content -->
                 <main class="row">
 
-                    <!-- Slider -->
-                    <div class="col-12 px-0">
-                        <div id="slider" class="carousel slide w-100" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#slider" data-slide-to="0" class="active"></li>
-                                <li data-target="#slider" data-slide-to="1"></li>
-                                <li data-target="#slider" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner" role="listbox">
-                                <div class="carousel-item active">
-                                    <img src="images/slider-1.jpg" class="slider-img">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="images/slider-2.jpg" class="slider-img">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="images/slider-3.jpg" class="slider-img">
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#slider" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#slider" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Slider -->
-
-                    <!-- Featured Products -->
+                    <!-- Category Products -->
                     <div class="col-12">
                         <div class="row">
                             <div class="col-12 py-3">
                                 <div class="row">
-                                    <div class="col-12 text-center text-uppercase">
-                                        <h2>Featured Products</h2>
-                                    </div>
-                                </div>
-                                <div class="row">
 
-                                    <!-- Product -->
-                                    <div class="col-lg-3 col-sm-6 my-3">
-                                        <div class="col-12 bg-white text-center h-100 product-item">
-                                            <div class="row h-100">
-                                                <div class="col-12 p-0 mb-3">
-                                                    <a href="product.php">
-                                                        <img src="images/image-1.jpg" class="img-fluid">
-                                                    </a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <a href="product.php" class="product-name">Sony Alpha DSLR Camera</a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <span class="product-price-old">
-                                                        $500
-                                                    </span>
-                                                    <br>
-                                                    <span class="product-price">
-                                                        $500
-                                                    </span>
-                                                </div>
-                                                <div class="col-12 mb-3 align-self-end">
-                                                    <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Product -->
 
-                                    <!-- Product -->
-                                    <div class="col-lg-3 col-sm-6 my-3">
-                                        <div class="col-12 bg-white text-center h-100 product-item">
-                                            <div class="row h-100">
-                                                <div class="col-12 p-0 mb-3">
-                                                    <a href="product.php">
-                                                        <img src="images/image-2.jpg" class="img-fluid">
-                                                    </a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <a href="product.php" class="product-name">Optoma 4K HDR Projector</a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <span class="product-price">
-                                                        $1,500
-                                                    </span>
-                                                </div>
-                                                <div class="col-12 mb-3 align-self-end">
-                                                    <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Product -->
-
-                                    <!-- Product -->
-                                    <div class="col-lg-3 col-sm-6 my-3">
-                                        <div class="col-12 bg-white text-center h-100 product-item">
-                                            <div class="row h-100">
-                                                <div class="col-12 p-0 mb-3">
-                                                    <a href="product.php">
-                                                        <img src="images/image-3.jpg" class="img-fluid">
-                                                    </a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <a href="product.php" class="product-name">HP Envy Specter 360</a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <div class="product-price-old">
-                                                        $2,800
+                                    <?php $requet = $BDD->query("SELECT * FROM `jeux` WHERE 1");
+                                    while ($donné = $requet->fetch()) { ?>
+                                        <!-- Product -->
+                                        <div class="col-xl-2 col-lg-3 col-sm-6 my-3">
+                                            <div class="col-12 bg-white text-center h-100 product-item">
+                                                <div class="row h-100">
+                                                    <div class="col-12 p-0 mb-3">
+                                                        <a href="product.php?jeux=<?php echo $donné['id_jeux'] ?>">
+                                                            <img src="images/<?php echo $donné['Image'] ?>" class="img-fluid">
+                                                        </a>
                                                     </div>
-                                                    <span class="product-price">
-                                                        $2,500
-                                                    </span>
-                                                </div>
-                                                <div class="col-12 mb-3 align-self-end">
-                                                    <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Product -->
-
-                                    <!-- Product -->
-                                    <div class="col-lg-3 col-sm-6 my-3">
-                                        <div class="col-12 bg-white text-center h-100 product-item">
-                                            <div class="row h-100">
-                                                <div class="col-12 p-0 mb-3">
-                                                    <a href="product.php">
-                                                        <img src="images/image-4.jpg" class="img-fluid">
-                                                    </a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <a href="product.php" class="product-name">Dell Alienware Area 51</a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <span class="product-price">
-                                                        $4,500
-                                                    </span>
-                                                </div>
-                                                <div class="col-12 mb-3 align-self-end">
-                                                    <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Product -->
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Featured Products -->
-
-                    <div class="col-12">
-                        <hr>
-                    </div>
-
-                    <!-- Latest Product -->
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-12 py-3">
-                                <div class="row">
-                                    <div class="col-12 text-center text-uppercase">
-                                        <h2>Latest Products</h2>
-                                    </div>
-                                </div>
-                                <div class="row">
-
-                                    <!-- Product -->
-                                    <div class="col-lg-3 col-sm-6 my-3">
-                                        <div class="col-12 bg-white text-center h-100 product-item">
-                                            <span class="new">New</span>
-                                            <div class="row h-100">
-                                                <div class="col-12 p-0 mb-3">
-                                                    <a href="product.php">
-                                                        <img src="images/image-1.jpg" class="img-fluid">
-                                                    </a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <a href="product.php" class="product-name">Sony Alpha DSLR Camera</a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <span class="product-price-old">
-                                                        $500
-                                                    </span>
-                                                    <br>
-                                                    <span class="product-price">
-                                                        $500
-                                                    </span>
-                                                </div>
-                                                <div class="col-12 mb-3 align-self-end">
-                                                    <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Product -->
-
-                                    <!-- Product -->
-                                    <div class="col-lg-3 col-sm-6 my-3">
-                                        <div class="col-12 bg-white text-center h-100 product-item">
-                                            <span class="new">New</span>
-                                            <div class="row h-100">
-                                                <div class="col-12 p-0 mb-3">
-                                                    <a href="product.php">
-                                                        <img src="images/image-2.jpg" class="img-fluid">
-                                                    </a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <a href="product.php" class="product-name">Optoma 4K HDR Projector</a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <span class="product-price">
-                                                        $1,500
-                                                    </span>
-                                                </div>
-                                                <div class="col-12 mb-3 align-self-end">
-                                                    <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Product -->
-
-                                    <!-- Product -->
-                                    <div class="col-lg-3 col-sm-6 my-3">
-                                        <div class="col-12 bg-white text-center h-100 product-item">
-                                            <span class="new">New</span>
-                                            <div class="row h-100">
-                                                <div class="col-12 p-0 mb-3">
-                                                    <a href="product.php">
-                                                        <img src="images/image-3.jpg" class="img-fluid">
-                                                    </a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <a href="product.php" class="product-name">HP Envy Specter 360</a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <div class="product-price-old">
-                                                        $2,800
+                                                    <div class="col-12 mb-3">
+                                                        <a href="product.php?jeux=<?php echo $donné['id_jeux'] ?>" class="product-name"><?php echo $donné['Nom'] ?></a>
                                                     </div>
-                                                    <span class="product-price">
-                                                        $2,500
-                                                    </span>
-                                                </div>
-                                                <div class="col-12 mb-3 align-self-end">
-                                                    <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Product -->
-
-                                    <!-- Product -->
-                                    <div class="col-lg-3 col-sm-6 my-3">
-                                        <div class="col-12 bg-white text-center h-100 product-item">
-                                            <span class="new">New</span>
-                                            <div class="row h-100">
-                                                <div class="col-12 p-0 mb-3">
-                                                    <a href="product.php">
-                                                        <img src="images/image-4.jpg" class="img-fluid">
-                                                    </a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <a href="product.php" class="product-name">Dell Alienware Area 51</a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <span class="product-price">
-                                                        $4,500
-                                                    </span>
-                                                </div>
-                                                <div class="col-12 mb-3 align-self-end">
-                                                    <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Product -->
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Latest Products -->
-
-                    <div class="col-12">
-                        <hr>
-                    </div>
-
-                    <!-- Top Selling Products -->
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-12 py-3">
-                                <div class="row">
-                                    <div class="col-12 text-center text-uppercase">
-                                        <h2>Top Selling Products</h2>
-                                    </div>
-                                </div>
-                                <div class="row">
-
-                                    <!-- Product -->
-                                    <div class="col-lg-3 col-sm-6 my-3">
-                                        <div class="col-12 bg-white text-center h-100 product-item">
-                                            <div class="row h-100">
-                                                <div class="col-12 p-0 mb-3">
-                                                    <a href="product.php">
-                                                        <img src="images/image-1.jpg" class="img-fluid">
-                                                    </a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <a href="product.php" class="product-name">Sony Alpha DSLR Camera</a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <span class="product-price-old">
-                                                        $500
-                                                    </span>
-                                                    <br>
-                                                    <span class="product-price">
-                                                        $500
-                                                    </span>
-                                                </div>
-                                                <div class="col-12 mb-3 align-self-end">
-                                                    <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Product -->
-
-                                    <!-- Product -->
-                                    <div class="col-lg-3 col-sm-6 my-3">
-                                        <div class="col-12 bg-white text-center h-100 product-item">
-                                            <div class="row h-100">
-                                                <div class="col-12 p-0 mb-3">
-                                                    <a href="product.php">
-                                                        <img src="images/image-2.jpg" class="img-fluid">
-                                                    </a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <a href="product.php" class="product-name">Optoma 4K HDR Projector</a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <span class="product-price">
-                                                        $1,500
-                                                    </span>
-                                                </div>
-                                                <div class="col-12 mb-3 align-self-end">
-                                                    <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Product -->
-
-                                    <!-- Product -->
-                                    <div class="col-lg-3 col-sm-6 my-3">
-                                        <div class="col-12 bg-white text-center h-100 product-item">
-                                            <div class="row h-100">
-                                                <div class="col-12 p-0 mb-3">
-                                                    <a href="product.php">
-                                                        <img src="images/image-3.jpg" class="img-fluid">
-                                                    </a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <a href="product.php" class="product-name">HP Envy Specter 360</a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <div class="product-price-old">
-                                                        $2,800
+                                                    <div class="col-12 mb-3 align-self-end">
+                                                        <a href="product.php?jeux=<?php echo $donné['id_jeux'] ?>" class="btn btn-outline-dark">savoir plus</a>
                                                     </div>
-                                                    <span class="product-price">
-                                                        $2,500
-                                                    </span>
-                                                </div>
-                                                <div class="col-12 mb-3 align-self-end">
-                                                    <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- Product -->
-
-                                    <!-- Product -->
-                                    <div class="col-lg-3 col-sm-6 my-3">
-                                        <div class="col-12 bg-white text-center h-100 product-item">
-                                            <div class="row h-100">
-                                                <div class="col-12 p-0 mb-3">
-                                                    <a href="product.php">
-                                                        <img src="images/image-4.jpg" class="img-fluid">
-                                                    </a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <a href="product.php" class="product-name">Dell Alienware Area 51</a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <span class="product-price">
-                                                        $4,500
-                                                    </span>
-                                                </div>
-                                                <div class="col-12 mb-3 align-self-end">
-                                                    <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Product -->
-
+                                        <!-- Product -->
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Top Selling Products -->
+                    <!-- Category Products -->
 
-                    <div class="col-12 py-3 bg-light d-sm-block d-none">
-                        <div class="row">
-                            <div class="col-lg-3 col ml-auto large-holder">
-                                <div class="row">
-                                    <div class="col-auto ml-auto large-icon">
-                                        <i class="fas fa-money-bill"></i>
-                                    </div>
-                                    <div class="col-auto mr-auto large-text">
-                                        Best Price
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col large-holder">
-                                <div class="row">
-                                    <div class="col-auto ml-auto large-icon">
-                                        <i class="fas fa-truck-moving"></i>
-                                    </div>
-                                    <div class="col-auto mr-auto large-text">
-                                        Fast Delivery
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col mr-auto large-holder">
-                                <div class="row">
-                                    <div class="col-auto ml-auto large-icon">
-                                        <i class="fas fa-check"></i>
-                                    </div>
-                                    <div class="col-auto mr-auto large-text">
-                                        Genuine Products
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </main>
                 <!-- Main Content -->
             </div>
@@ -602,13 +178,13 @@
             <div class="col-12 align-self-end">
                 <!-- Footer -->
                 <footer class="row">
-                    <div class="col-12 bg-dark text-white pb-3 pt-5">
-                        <div class="row">
+                     <div class="col-12 bg-dark text-white pb-3 pt-5">
+                       <!-- <div class="row">
                             <div class="col-lg-2 col-sm-4 text-center text-sm-left mb-sm-0 mb-3">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="footer-logo">
-                                            <a href="index.php">E-Commerce</a>
+                                            <a href="index.php"></a>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -632,7 +208,6 @@
                                         <h4>Who are we?</h4>
                                     </div>
                                     <div class="col-12 text-justify">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam imperdiet vel ligula vel sodales. Aenean vel ullamcorper purus, ac pharetra arcu. Nam enim velit, ultricies eu orci nec, aliquam efficitur sem. Quisque in sapien a sem vestibulum volutpat at eu nibh. Suspendisse eget est metus. Maecenas mollis quis nisl ac malesuada. Donec gravida tortor massa, vitae semper leo sagittis a. Donec augue turpis, rutrum vitae augue ut, venenatis auctor nulla. Sed posuere at erat in consequat. Nunc congue justo ut ante sodales, bibendum blandit augue finibus.</p>
                                     </div>
                                 </div>
                             </div>
@@ -705,52 +280,18 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </footer>
+                        </div>-->
+                    </div> 
+                </footer> 
                 <!-- Footer -->
             </div>
         </div>
 
     </div>
 
-    <!-- Messages -->
-    <div class="message-holder">
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <button type="button" class="close" data-dismiss="alert">
-                <small><i class="fas fa-times"></i></small>
-            </button>
-            <i class="fas fa-check-circle mr-2"></i>
-            This is a success alert message.
-        </div>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <button type="button" class="close" data-dismiss="alert">
-                <small><i class="fas fa-times"></i></small>
-            </button>
-            <i class="fas fa-times-circle mr-2"></i>
-            This is a error alert message.
-        </div>
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <button type="button" class="close" data-dismiss="alert">
-                <small><i class="fas fa-times"></i></small>
-            </button>
-            <i class="fas fa-exclamation-circle mr-2"></i>
-            This is a warning alert message.
-        </div>
-        <div class="alert alert-info alert-dismissible fade show" role="alert">
-            <button type="button" class="close" data-dismiss="alert">
-                <small><i class="fas fa-times"></i></small>
-            </button>
-            <i class="fas fa-info-circle mr-2"></i>
-            This is a info alert message.
-        </div>
-    </div>
-    <!-- Messages -->
-
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
-
 </body>
 
 </html>

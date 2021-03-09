@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="fr">
 <?php require 'user.php';
-$BDD = new PDO('mysql:host=localhost; dbname=jeu; charset=utf8', 'root', '');
+$BDD = new PDO('mysql:host=192.168.65.227; dbname=jeu; charset=utf8', 'kiki', 'kiki');
 $user = new user($BDD);
 ?>
 
@@ -31,14 +31,7 @@ $user = new user($BDD);
                     <div class="col-12 bg-dark py-2 d-md-block d-none">
                         <div class="row">
                             <div class="col-auto mr-auto">
-                                <ul class="top-nav">
-                                    <li>
-                                        <a href="tel:+123-456-7890"><i class="fa fa-phone-square mr-2"></i>+123-456-7890</a>
-                                    </li>
-                                    <li>
-                                        <a href="mailto:mail@ecom.com"><i class="fa fa-envelope mr-2"></i>mail@ecom.com</a>
-                                    </li>
-                                </ul>
+
                             </div>
                             <div class="col-auto">
                                 <form action="" method="post">
@@ -79,27 +72,6 @@ $user = new user($BDD);
                                     <a href="index.php">Jeux</a>
                                 </div>
                             </div>
-                            <div class="col-lg-5 mx-auto mt-4 mt-lg-0">
-                                <form action="#">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <input type="search" class="form-control border-dark" placeholder="Search..." required>
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-dark"><i class="fas fa-search"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-lg-auto text-center text-lg-left header-item-holder">
-                                <a href="#" class="header-item">
-                                    <i class="fas fa-heart mr-2"></i><span id="header-favorite">0</span>
-                                </a>
-                                <a href="#" class="header-item">
-                                    <i class="fas fa-shopping-bag mr-2"></i><span id="header-qty" class="mr-3">2</span>
-                                    <i class="fas fa-money-bill-wave mr-2"></i><span id="header-price">$4,000</span>
-                                </a>
-                            </div>
                         </div>
 
                         <!-- Nav -->
@@ -113,7 +85,7 @@ $user = new user($BDD);
                                         <li class="nav-item active">
                                             <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                                         </li>
-                                        <li class="nav-item dropdown">
+                                        <!-- <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle" href="#" id="electronics" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Electronics</a>
                                             <div class="dropdown-menu" aria-labelledby="electronics">
                                                 <a class="dropdown-item" href="category.php">Computers</a>
@@ -142,7 +114,7 @@ $user = new user($BDD);
                                                 <a class="dropdown-item" href="category.php">Children's</a>
                                                 <a class="dropdown-item" href="category.php">Non-Fiction</a>
                                             </div>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                             </nav>
@@ -156,6 +128,12 @@ $user = new user($BDD);
             </div>
 
             <div class="col-12">
+                <?php $idjeu = $_GET['jeux'];
+                $requetjeu = $BDD->query("SELECT * FROM `jeux` WHERE `id_jeux`= $idjeu");
+                $donnéjeux = $requetjeu->fetch();
+
+
+                ?>
                 <!-- Main Content -->
                 <main class="row">
                     <div class="col-12 bg-white py-3 my-3">
@@ -164,21 +142,21 @@ $user = new user($BDD);
                             <!-- Product Images -->
                             <div class="col-lg-5 col-md-12 mb-3">
                                 <div class="col-12 mb-3">
-                                    <div class="img-large border" style="background-image: url('images/image-1.jpg')"></div>
+                                    <div class="img-large border" style="background-image: url('images/<?php echo $donnéjeux['Image'] ?>')"></div>
                                 </div>
                                 <div class="col-12">
                                     <div class="row">
                                         <div class="col-sm-2 col-3">
-                                            <div class="img-small border" style="background-image: url('images/image-1.jpg')" data-src="images/image-1.jpg"></div>
+                                            <div class="img-small border" style="background-image: url('images/<?php echo $donnéjeux['Image'] ?>')" data-src="images/<?php echo $donnéjeux['Image'] ?>"></div>
                                         </div>
                                         <div class="col-sm-2 col-3">
-                                            <div class="img-small border" style="background-image: url('images/image-2.jpg')" data-src="images/image-2.jpg"></div>
+                                            <div class="img-small border" style="background-image: url('images/<?php echo $donnéjeux['Image2'] ?>')" data-src="images/<?php echo $donnéjeux['Image2'] ?>"></div>
                                         </div>
                                         <div class="col-sm-2 col-3">
-                                            <div class="img-small border" style="background-image: url('images/image-3.jpg')" data-src="images/image-3.jpg"></div>
+                                            <div class="img-small border" style="background-image: url('images/<?php echo $donnéjeux['Image3'] ?>')" data-src="images/<?php echo $donnéjeux['Image3'] ?>"></div>
                                         </div>
                                         <div class="col-sm-2 col-3">
-                                            <div class="img-small border" style="background-image: url('images/image-4.jpg')" data-src="images/image-4.jpg"></div>
+                                            <div class="img-small border" style="background-image: url('images/<?php echo $donnéjeux['Image4'] ?>')" data-src="images/<?php echo $donnéjeux['Image4'] ?>"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -186,23 +164,17 @@ $user = new user($BDD);
                             <!-- Product Images -->
 
                             <!-- Product Info -->
-                            <?php $requet = $BDD->query("SELECT * FROM `jeux` WHERE 1");
-                                    while ($donné = $requet->fetch()) { ?>
                             <div class="col-lg-5 col-md-9">
                                 <div class="col-12 product-name large">
-                                <?php echo $donné['id_jeux'] ?> <?php echo $donné['Nom'] ?>
-                                    <small>By <a href="">Dell</a></small>
+                                    <?php echo $donnéjeux['Nom'] ?>
                                 </div>
                                 <div class="col-12 px-0">
                                     <hr>
                                 </div>
                                 <div class="col-12">
-                                    <ul>
-                                        
-                                    </ul>
+                                    <?php echo $donnéjeux['Description'] ?>
                                 </div>
                             </div>
-                            <?php } ?>
                             <!-- Product Info -->
 
                             <!-- Sidebar -->
@@ -217,286 +189,20 @@ $user = new user($BDD);
                                         </div>
                                         <div class="col-xl-5 col-md-9 col-sm-3 col-5 mx-auto mt-3">
                                             <div class="form-group">
-                                        </div>
-                                        <div class="col-12 mt-3">
-                                            <button class="btn btn-outline-secondary btn-sm" type="button"><i class="fas fa-heart mr-2"></i>Add to wishlist</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Sidebar -->
-
-                        </div>
-                    </div>
-
-                    <div class="col-12 mb-3 py-3 bg-white text-justify">
-                        <div class="row">
-
-                            <!-- Details -->
-                            <div class="col-md-7">
-                                <div class="col-12">
-                                    <div class="row">
-                                        <div class="col-12 text-uppercase">
-                                            <h2><u>Details</u></h2>
-                                        </div>
-                                        <div class="col-12" id="details">
-                                            <h4>OPERATING SYSTEM</h4>
-
-                                            <p><strong>Available with Windows 10 Home:</strong> Gaming is better than ever on Windows 10, with games in 4K, DirectX 12, and streaming your gameplay*.</p>
-                                            <hr>
-                                            <h4>CONSIDER THE GAME CHANGED</h4>
-
-                                            <p>The Alienware Area-51m is unlike any mobile gaming machine ever created. With unprecedented desktop-level processing power, CPU and GPU upgradability, advanced cooling and a premium, revolutionary design, a true desktop-gaming experience is now available in the form of a laptop.</p>
-                                            <hr>
-                                            <h4>DESKTOP POWER PACKED INTO A LAPTOP</h4>
-
-                                            <p>The Area-51m features a host of firsts for peak performance and power. It’s our first-ever Alienware laptop to feature 8-core, 16-thread Intel® processors, giving it a whole new level of compute power versus other gaming laptops. Engineered with desktop processors, the CPU is enabled with up to 125% rated power, allowing high-end overclocking. This results in higher performance for megatasking, CPU-intensive gaming, as well as day-to-day applications.</p>
-
-                                            <p>Lose yourself in vivid, uninterrupted gaming thanks to NVIDIA® GeForce RTX™ graphics with full-throttle power and up to 30W of overclocking headroom—all on an immersive 144Hz G-SYNC 17" Full HD display. Users can overclock their settings via the new Alienware Command Center.</p>
-
-                                            <p>The Area-51m is also our first-ever Alienware laptop to support up to 64GB of DDR4 memory, ensuring you have enough RAM for even the most performance-intensive tasks.</p>
-                                            <hr>
-                                            <h4>UNPRECEDENTED UPGRADEABILITY</h4>
-
-                                            <p>Gamers have made it clear that they’ve noticed a lack of CPU and GPU upgradability in gaming laptops.</p>
-
-                                            <p>The Area-51m was engineered with this in mind, finally allowing gamers to harness power comparable to even the highest-performance desktop, and taking advantage of latest technologies from NVIDIA® such as ray tracing, DLSS, and AI enhanced graphics.</p>
-
-                                            <p>CPU upgrades can be done using standard desktop-class processors, while GPU upgrades can be done via onboard graphics module replacement or with the Alienware Graphics Amplifier.</p>
-                                            <hr>
-                                            <h4>ADVANCED ALIENWARE CRYO-TECH COOLING</h4>
-
-                                            <p>Our thermal technology, Advanced Alienware Cryo-Tech v2.0, optimizes component cooling, which maximizes overall performance and keeps your laptop cool to the touch. Here’s a closer look at our innovative cooling solution.</p>
-
-                                            <p><strong>Dual-Intake, Dual-Exhaust Airflow Design:</strong> The Area-51m chassis prioritizes performance with a dual fan design that pulls in cool air from the bottom and top vents, while exhaling exhaust out the rear and side vents for optimal core component cooling. (The Intel® Core™ i7-8700 with NVIDIA® GeForce RTX™ 2060 configuration does not have a side-exhaust)</p>
-
-                                            <p><strong>High Voltage Driving Fan:</strong> The fire resistant, liquid-crystal polymer fan is built with 0.2mm blades, sleeve bearings and 3-phase fan control to create less friction and circulate air more efficiently. The Area-51m fans occupy an area of 95x105mm with a thickness ranging from 19mm to 21.5mm and can push over 25 CFM in open air conditions—something normally seen only in desktops.</p>
-
-                                            <p><strong>Load-balancing Heat Pipes:</strong> The dynamics of thermal activity across critical components like the GPU and the CPU are intelligently discharged across various dedicated and shared 8mm and 6mm copper-composite heat pipes.The highest-end configurations carry 7 total heat pipes.</p>
-
-                                            <p><strong>Copper Fin Stacks:</strong> The Area-51m features best-in-class surface temperatures, largely due to a thermal module, including four 0.15mm copper fins.Heat is drawn away from the most critical components to prioritize system performance and longevity.</p>
-
-                                            <p><strong>Thermal Control:</strong> Cryo-Tech v2.0 ensures that 100% of the system's GPU thermal design power is enabled, while also ensuring CPU-intensive games benefit from high performance.</p>
-
-                                            <p><strong>Whisper-quiet:</strong> The cooling system of the Area-51m is so powerful, virtually no noise is heard while engaged in daily tasks.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Details -->
-
-                            <!-- Ratings & Reviews -->
-                            <div class="col-md-5">
-                                <div class="col-12 px-md-4 border-top border-left sidebar h-100">
-
-                                    <!-- Rating -->
-                                    <div class="row">
-                                        <div class="col-12 mt-md-0 mt-3 text-uppercase">
-                                            <h2><u>Ratings & Reviews</u></h2>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="row">
-                                                <div class="col-sm-4 text-center">
-                                                    <div class="row">
-                                                        <?php $moyenne = 0;
-                                                        $idjeu = $_GET['jeux'];
-                                                        $totalNote = 0;
-                                                        $un = 0;
-                                                        $deux = 0;
-                                                        $troi = 0;
-                                                        $quatre = 0;
-                                                        $cinqe = 0;
-
-                                                        $donnerCal = $BDD->query("SELECT `note` FROM `note` WHERE `id_jeu` = $idjeu");
-                                                        while ($donnéMoy = $donnerCal->fetch()) {
-                                                            $moyenne = $moyenne + $donnéMoy['note'];
-                                                            $totalNote++;
-                                                            if ($donnéMoy['note'] == '1') {
-                                                                $un++;
-                                                            } else if ($donnéMoy['note'] == '2') {
-                                                                $deux++;
-                                                            } else if ($donnéMoy['note'] == '3') {
-                                                                $troi++;
-                                                            } else if ($donnéMoy['note'] == '4') {
-                                                                $quatre++;
-                                                            } else if ($donnéMoy['note'] == '5') {
-                                                                $cinqe++;
-                                                            }
-                                                        }
-                                                        if ($totalNote == '0') {
-                                                            $moyenne = $totalNote;
-                                                        } else if ($totalNote > '0') {
-                                                            $moyenne = $moyenne / $totalNote;
-                                                        }
-
-                                                        ?>
-                                                        <div class="col-12 average-rating">
-                                                            <?php echo number_format($moyenne,1) ; ?>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            sur <?php echo $totalNote; ?> avis
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <ul class="rating-list mt-3">
-                                                        <?php if ($totalNote == '0') { ?>
-                                                            <li>
-                                                                <div class="progress">
-                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">0%</div>
-                                                                </div>
-                                                                <div class="rating-progress-label">
-                                                                    5<i class="fas fa-star ml-1"></i>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="progress">
-                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">0%</div>
-                                                                </div>
-                                                                <div class="rating-progress-label">
-                                                                    4<i class="fas fa-star ml-1"></i>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="progress">
-                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">0%</div>
-                                                                </div>
-                                                                <div class="rating-progress-label">
-                                                                    3<i class="fas fa-star ml-1"></i>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="progress">
-                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100">0%</div>
-                                                                </div>
-                                                                <div class="rating-progress-label">
-                                                                    2<i class="fas fa-star ml-1"></i>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-
-                                                                <div class="progress">
-                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="3" aria-valuemin="3" aria-valuemax="100">0%</div>
-                                                                </div>
-                                                                <div class="rating-progress-label">
-                                                                    1<i class="fas fa-star ml-1"></i>
-                                                                </div>
-                                                            </li>
-                                                        <?php } else { ?>
-                                                            <li>
-                                                                <?php $cinqe = ($cinqe * 100) / $totalNote ?>
-                                                                <div class="progress">
-                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $cinqe ?>%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"><?php echo number_format($cinqe,2)?>%</div>
-                                                                </div>
-                                                                <div class="rating-progress-label">
-                                                                    5<i class="fas fa-star ml-1"></i>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <?php $quatre = ($quatre * 100) / $totalNote ?>
-                                                                <div class="progress">
-                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $quatre ?>%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><?php echo number_format($quatre,2)?>%</div>
-                                                                </div>
-                                                                <div class="rating-progress-label">
-                                                                    4<i class="fas fa-star ml-1"></i>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <?php $troi = ($troi * 100) / $totalNote ?>
-                                                                <div class="progress">
-                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $troi ?>%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"><?php echo number_format($troi,2) ?>%</div>
-                                                                </div>
-                                                                <div class="rating-progress-label">
-                                                                    3<i class="fas fa-star ml-1"></i>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <?php $deux = ($deux * 100) / $totalNote ?>
-                                                                <div class="progress">
-                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $deux ?>%;" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"><?php echo number_format($deux,2)?>%</div>
-                                                                </div>
-                                                                <div class="rating-progress-label">
-                                                                    2<i class="fas fa-star ml-1"></i>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <?php $un = ($un * 100) / $totalNote ?>
-                                                                <div class="progress">
-                                                                    <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $un ?>%;" aria-valuenow="3" aria-valuemin="3" aria-valuemax="100"><?php echo number_format($un,2) ?>%</div>
-                                                                </div>
-                                                                <div class="rating-progress-label">
-                                                                    1<i class="fas fa-star ml-1"></i>
-                                                                </div>
-                                                            </li>
-                                                        <?php } ?>
-                                                    </ul>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Rating -->
+                                </div>
+                                <!-- Sidebar -->
 
-                                    <div class="row">
-                                        <div class="col-12 px-md-3 px-0">
-                                            <hr>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
 
-                                    <!-- Add Review -->
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h4>Add Review</h4>
-                                        </div>
-                                        <div class="col-12">
-                                            <form method="post">
-                                                <div class="form-group">
-                                                    <textarea class="form-control" placeholder="Give your review" name="message"></textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="d-flex ratings justify-content-end flex-row-reverse">
-                                                        <input type="radio" value="5" name="note" id="rating-5"><label for="rating-5"></label>
-                                                        <input type="radio" value="4" name="note" id="rating-4"><label for="rating-4"></label>
-                                                        <input type="radio" value="3" name="note" id="rating-3"><label for="rating-3"></label>
-                                                        <input type="radio" value="2" name="note" id="rating-2"><label for="rating-2"></label>
-                                                        <input type="radio" value="1" name="note" id="rating-1" checked><label for="rating-1"></label>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button class="btn btn-outline-dark" name="avi">Add Review</button>
-                                                </div>
-                                            </form>
-                                            <?php
-                                            if(!isset($_SESSION['id'])){
-                                                echo '<span style="color:red"> il faut etre connecter pour pouvoir commentait ou évaluer se jeu </span>';
-                                            }else{
-                                                $verifNote = $BDD->prepare("SELECT * FROM `note` WHERE `id_user`= ? AND `id_jeu`= ?");
-                                                $verifNote->execute(array($_SESSION['id'], $idjeu));
-                                                $donnerverifNote = $verifNote->rowCount();
-                                                if (isset($_POST['avi'])) {
-                                                    $user->commetaire($_SESSION['id'], $_GET['jeux'], $_POST['message']);
-                                                     if($donnerverifNote == 0){
-                                                        $user->note($_SESSION['id'],$_GET['jeux'],$_POST['note']);
-                                                     }else{
-                                                        echo '<span style="color:red"> vous avez déja évaluer ce jeu </span>';
-                                                     }
-                                                 }
-                                            }
+                        <div class="col-12 mb-3 py-3 bg-white text-justify">
+                            <div class="row">
 
-
-
-                                            ?>
-                                        </div>
-                                    </div>
-            
-                                    <!-- Add Review -->
-
-                                    <div class="row">
-                                        <div class="col-12 px-md-3 px-0">
-                                            <hr>
-                                        </div>
-                                    </div>
-
-                                    <!-- Review -->
+                                <!-- Details -->
+                                <div class="col-md-7">
                                     <div class="row">
                                         <div class="col-12">
                                             <?php
@@ -559,137 +265,223 @@ $user = new user($BDD);
                                             <?php } ?>
                                         </div>
                                     </div>
-                                    <!-- Review -->
-
                                 </div>
-                            </div>
-                            <!-- Ratings & Reviews -->
+                                <!-- Details -->
 
-                        </div>
-                    </div>
+                                <!-- Ratings & Reviews -->
+                                <div class="col-md-5">
+                                    <div class="col-12 px-md-4 border-top border-left sidebar h-100">
 
-                    <!-- Similar Product -->
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-12 py-3">
-                                <div class="row">
-                                    <div class="col-12 text-center text-uppercase">
-                                        <h2>Similar Products</h2>
-                                    </div>
-                                </div>
-                                <div class="row">
-
-                                    <!-- Product -->
-                                    <div class="col-lg-3 col-sm-6 my-3">
-                                        <div class="col-12 bg-white text-center h-100 product-item">
-                                            <div class="row h-100">
-                                                <div class="col-12 p-0 mb-3">
-                                                    <a href="product.php">
-                                                        <img src="images/image-1.jpg" class="img-fluid">
-                                                    </a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <a href="product.php" class="product-name">Sony Alpha DSLR Camera</a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <span class="product-price-old">
-                                                        $500
-                                                    </span>
-                                                    <br>
-                                                    <span class="product-price">
-                                                        $500
-                                                    </span>
-                                                </div>
-                                                <div class="col-12 mb-3 align-self-end">
-                                                    <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                                                </div>
+                                        <!-- Rating -->
+                                        <div class="row">
+                                            <div class="col-12 mt-md-0 mt-3 text-uppercase">
+                                                <h2><u>NOTATIONS ET AVIS </u></h2>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <!-- Product -->
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-sm-4 text-center">
+                                                        <div class="row">
+                                                            <?php $moyenne = 0;
+                                                            $totalNote = 0;
+                                                            $un = 0;
+                                                            $deux = 0;
+                                                            $troi = 0;
+                                                            $quatre = 0;
+                                                            $cinqe = 0;
 
-                                    <!-- Product -->
-                                    <div class="col-lg-3 col-sm-6 my-3">
-                                        <div class="col-12 bg-white text-center h-100 product-item">
-                                            <div class="row h-100">
-                                                <div class="col-12 p-0 mb-3">
-                                                    <a href="product.php">
-                                                        <img src="images/image-2.jpg" class="img-fluid">
-                                                    </a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <a href="product.php" class="product-name">Optoma 4K HDR Projector</a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <span class="product-price">
-                                                        $1,500
-                                                    </span>
-                                                </div>
-                                                <div class="col-12 mb-3 align-self-end">
-                                                    <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Product -->
+                                                            $donnerCal = $BDD->query("SELECT `note` FROM `note` WHERE `id_jeu` = $idjeu");
+                                                            while ($donnéMoy = $donnerCal->fetch()) {
+                                                                $moyenne = $moyenne + $donnéMoy['note'];
+                                                                $totalNote++;
+                                                                if ($donnéMoy['note'] == '1') {
+                                                                    $un++;
+                                                                } else if ($donnéMoy['note'] == '2') {
+                                                                    $deux++;
+                                                                } else if ($donnéMoy['note'] == '3') {
+                                                                    $troi++;
+                                                                } else if ($donnéMoy['note'] == '4') {
+                                                                    $quatre++;
+                                                                } else if ($donnéMoy['note'] == '5') {
+                                                                    $cinqe++;
+                                                                }
+                                                            }
+                                                            if ($totalNote == '0') {
+                                                                $moyenne = $totalNote;
+                                                            } else if ($totalNote > '0') {
+                                                                $moyenne = $moyenne / $totalNote;
+                                                            }
 
-                                    <!-- Product -->
-                                    <div class="col-lg-3 col-sm-6 my-3">
-                                        <div class="col-12 bg-white text-center h-100 product-item">
-                                            <div class="row h-100">
-                                                <div class="col-12 p-0 mb-3">
-                                                    <a href="product.php">
-                                                        <img src="images/image-3.jpg" class="img-fluid">
-                                                    </a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <a href="product.php" class="product-name">HP Envy Specter 360</a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <div class="product-price-old">
-                                                        $2,800
+                                                            ?>
+                                                            <div class="col-12 average-rating">
+                                                                <?php echo number_format($moyenne, 1); ?>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                sur <?php echo $totalNote; ?> avis
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <span class="product-price">
-                                                        $2,500
-                                                    </span>
-                                                </div>
-                                                <div class="col-12 mb-3 align-self-end">
+                                                    <div class="col">
+                                                        <ul class="rating-list mt-3">
+                                                            <?php if ($totalNote == '0') { ?>
+                                                                <li>
+                                                                    <div class="progress">
+                                                                        <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                                                    </div>
+                                                                    <div class="rating-progress-label">
+                                                                        5<i class="fas fa-star ml-1"></i>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div class="progress">
+                                                                        <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                                                    </div>
+                                                                    <div class="rating-progress-label">
+                                                                        4<i class="fas fa-star ml-1"></i>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div class="progress">
+                                                                        <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                                                    </div>
+                                                                    <div class="rating-progress-label">
+                                                                        3<i class="fas fa-star ml-1"></i>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div class="progress">
+                                                                        <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                                                    </div>
+                                                                    <div class="rating-progress-label">
+                                                                        2<i class="fas fa-star ml-1"></i>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+
+                                                                    <div class="progress">
+                                                                        <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="3" aria-valuemin="3" aria-valuemax="100">0%</div>
+                                                                    </div>
+                                                                    <div class="rating-progress-label">
+                                                                        1<i class="fas fa-star ml-1"></i>
+                                                                    </div>
+                                                                </li>
+                                                            <?php } else { ?>
+                                                                <li>
+                                                                    <?php $cinqe = ($cinqe * 100) / $totalNote ?>
+                                                                    <div class="progress">
+                                                                        <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $cinqe ?>%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"><?php echo number_format($cinqe, 2) ?>%</div>
+                                                                    </div>
+                                                                    <div class="rating-progress-label">
+                                                                        5<i class="fas fa-star ml-1"></i>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <?php $quatre = ($quatre * 100) / $totalNote ?>
+                                                                    <div class="progress">
+                                                                        <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $quatre ?>%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><?php echo number_format($quatre, 2) ?>%</div>
+                                                                    </div>
+                                                                    <div class="rating-progress-label">
+                                                                        4<i class="fas fa-star ml-1"></i>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <?php $troi = ($troi * 100) / $totalNote ?>
+                                                                    <div class="progress">
+                                                                        <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $troi ?>%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"><?php echo number_format($troi, 2) ?>%</div>
+                                                                    </div>
+                                                                    <div class="rating-progress-label">
+                                                                        3<i class="fas fa-star ml-1"></i>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <?php $deux = ($deux * 100) / $totalNote ?>
+                                                                    <div class="progress">
+                                                                        <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $deux ?>%;" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"><?php echo number_format($deux, 2) ?>%</div>
+                                                                    </div>
+                                                                    <div class="rating-progress-label">
+                                                                        2<i class="fas fa-star ml-1"></i>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <?php $un = ($un * 100) / $totalNote ?>
+                                                                    <div class="progress">
+                                                                        <div class="progress-bar bg-dark" role="progressbar" style="width: <?php echo $un ?>%;" aria-valuenow="3" aria-valuemin="3" aria-valuemax="100"><?php echo number_format($un, 2) ?>%</div>
+                                                                    </div>
+                                                                    <div class="rating-progress-label">
+                                                                        1<i class="fas fa-star ml-1"></i>
+                                                                    </div>
+                                                                </li>
+                                                            <?php } ?>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- Product -->
+                                        <!-- Rating -->
 
-                                    <!-- Product -->
-                                    <div class="col-lg-3 col-sm-6 my-3">
-                                        <div class="col-12 bg-white text-center h-100 product-item">
-                                            <div class="row h-100">
-                                                <div class="col-12 p-0 mb-3">
-                                                    <a href="product.php">
-                                                        <img src="images/image-4.jpg" class="img-fluid">
-                                                    </a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <a href="product.php" class="product-name">Dell Alienware Area 51</a>
-                                                </div>
-                                                <div class="col-12 mb-3">
-                                                    <span class="product-price">
-                                                        $4,500
-                                                    </span>
-                                                </div>
-                                                <div class="col-12 mb-3 align-self-end">
-                                                    <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus mr-2"></i>Add to cart</button>
-                                                </div>
+                                        <div class="row">
+                                            <div class="col-12 px-md-3 px-0">
+                                                <hr>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- Product -->
 
+                                        <!-- Add Review -->
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h4>Add Review</h4>
+                                            </div>
+                                            <div class="col-12">
+                                                <form method="post">
+                                                    <div class="form-group">
+                                                        <textarea class="form-control" placeholder="Give your review" name="message"></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="d-flex ratings justify-content-end flex-row-reverse">
+                                                            <input type="radio" value="5" name="note" id="rating-5"><label for="rating-5"></label>
+                                                            <input type="radio" value="4" name="note" id="rating-4"><label for="rating-4"></label>
+                                                            <input type="radio" value="3" name="note" id="rating-3"><label for="rating-3"></label>
+                                                            <input type="radio" value="2" name="note" id="rating-2"><label for="rating-2"></label>
+                                                            <input type="radio" value="1" name="note" id="rating-1" checked><label for="rating-1"></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button class="btn btn-outline-dark" name="avi">commenter</button>
+                                                    </div>
+                                                </form>
+                                                <?php
+                                                if (!isset($_SESSION['id'])) {
+                                                    echo '<span style="color:red"> il faut etre connecter pour pouvoir commentait ou évaluer se jeu </span>';
+                                                } else {
+                                                    $verifNote = $BDD->prepare("SELECT * FROM `note` WHERE `id_user`= ? AND `id_jeu`= ?");
+                                                    $verifNote->execute(array($_SESSION['id'], $idjeu));
+                                                    $donnerverifNote = $verifNote->rowCount();
+                                                    if (isset($_POST['avi'])) {
+                                                        $user->commetaire($_SESSION['id'], $_GET['jeux'], $_POST['message']);
+                                                        if ($donnerverifNote == 0) {
+                                                            $user->note($_SESSION['id'], $_GET['jeux'], $_POST['note']);
+                                                        } else {
+                                                            echo '<span style="color:red"> vous avez déja évaluer ce jeu </span>';
+                                                        }
+                                                    }
+                                                }
+
+
+
+                                                ?>
+                                            </div>
+                                        </div>
+
+                                        <!-- Add Review -->
+
+                                        <div class="row">
+                                            <div class="col-12 px-md-3 px-0">
+                                                <hr>
+                                            </div>
+                                        </div>
+
+                                        <!-- Ratings & Reviews -->
+
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Similar Products -->
 
                 </main>
                 <!-- Main Content -->
@@ -699,109 +491,7 @@ $user = new user($BDD);
                 <!-- Footer -->
                 <footer class="row">
                     <div class="col-12 bg-dark text-white pb-3 pt-5">
-                        <div class="row">
-                            <div class="col-lg-2 col-sm-4 text-center text-sm-left mb-sm-0 mb-3">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="footer-logo">
-                                            <a href="index.php">E-Commerce</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <address>
-                                            221B Baker Street<br>
-                                            London, England
-                                        </address>
-                                    </div>
-                                    <div class="col-12">
-                                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                                        <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
-                                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-8 text-center text-sm-left mb-sm-0 mb-3">
-                                <div class="row">
-                                    <div class="col-12 text-uppercase">
-                                        <h4>Who are we?</h4>
-                                    </div>
-                                    <div class="col-12 text-justify">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam imperdiet vel ligula vel sodales. Aenean vel ullamcorper purus, ac pharetra arcu. Nam enim velit, ultricies eu orci nec, aliquam efficitur sem. Quisque in sapien a sem vestibulum volutpat at eu nibh. Suspendisse eget est metus. Maecenas mollis quis nisl ac malesuada. Donec gravida tortor massa, vitae semper leo sagittis a. Donec augue turpis, rutrum vitae augue ut, venenatis auctor nulla. Sed posuere at erat in consequat. Nunc congue justo ut ante sodales, bibendum blandit augue finibus.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-sm-3 col-5 ml-lg-auto ml-sm-0 ml-auto mb-sm-0 mb-3">
-                                <div class="row">
-                                    <div class="col-12 text-uppercase">
-                                        <h4>Quick Links</h4>
-                                    </div>
-                                    <div class="col-12">
-                                        <ul class="footer-nav">
-                                            <li>
-                                                <a href="#">Home</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Contact Us</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">About Us</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Privacy Policy</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Terms & Conditions</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-1 col-sm-2 col-4 mr-auto mb-sm-0 mb-3">
-                                <div class="row">
-                                    <div class="col-12 text-uppercase text-underline">
-                                        <h4>Help</h4>
-                                    </div>
-                                    <div class="col-12">
-                                        <ul class="footer-nav">
-                                            <li>
-                                                <a href="#">FAQs</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Shipping</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Returns</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Track Order</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Report Fraud</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 text-center text-sm-left">
-                                <div class="row">
-                                    <div class="col-12 text-uppercase">
-                                        <h4>Newsletter</h4>
-                                    </div>
-                                    <div class="col-12">
-                                        <form action="#">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Enter your email..." required>
-                                            </div>
-                                            <div class="form-group">
-                                                <button class="btn btn-outline-light text-uppercase">Subscribe</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       
                     </div>
                 </footer>
                 <!-- Footer -->
