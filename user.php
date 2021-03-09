@@ -68,13 +68,13 @@ class user
     public function errorGestion($erreur)
     {
         if ($erreur == "userDoesntExist") {
-            echo "<p class='red-text'>E-mail ou mot de passe incorrect</p>";
+            echo "<p class='red-text'>nom d'utilisateur ou mot de passe incorrect</p>";
         }
         if ($erreur == "noPassword") {
             echo "<p class='red-text'>Merci de remplir le champ mot de passe</p>";
         }
         if ($erreur == "invalidMail") {
-            echo "<p class='red-text'>L'adresse e-mail est invalide</p>";
+            echo "<p class='red-text'> nom d'utilisateur est invalide</p>";
         }
         if ($erreur == "succesConnect") {
             echo "<p class='green-text'>Connecté!</p>";
@@ -83,7 +83,7 @@ class user
             echo "<p class='red-text'>Les deux mots de passes ne correspondent pas</p>";
         }
         if ($erreur == "mailInvalide") {
-            echo "<p class='red-text'>L'adresse e-mail est incorrecte</p>";
+            echo "<p class='red-text'>nom d'utilisateur est incorrecte</p>";
         }
         if ($erreur == "mdpVide") {
             echo "<p class='red-text'>Merci de remplir le champ mot de passe</p>";
@@ -92,7 +92,7 @@ class user
             echo "<p class='red-text'>Merci de remplir les champs nom et prenom</p>";
         }
         if ($erreur == "mailUsed") {
-            echo "<p class='red-text'>Adresse e-mail déjà utilisée</p>";
+            echo "<p class='red-text'>nom d'utilisateur déjà utilisée</p>";
         }
         if ($erreur == "succesRegister") {
             echo "<p class='green-text'>Vous êtes inscris!</p>";

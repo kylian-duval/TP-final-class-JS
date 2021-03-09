@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
 
@@ -16,13 +16,14 @@
     <link rel="stylesheet" href="css/style.css">
     <?php require "user.php" ?>
 </head>
+
 <body>
-<?php 
-$BDD = new PDO('mysql:host=192.168.65.227; dbname=jeu; charset=utf8', 'kiki', 'kiki');
-$user = new user($BDD) ;
+    <?php
+    $BDD = new PDO('mysql:host=192.168.65.227; dbname=jeu; charset=utf8', 'kiki', 'kiki');
+    $user = new user($BDD);
 
 
-?>
+    ?>
     <div class="container-fluid">
         <div class="row min-vh-100">
             <div class="col-12">
@@ -32,11 +33,11 @@ $user = new user($BDD) ;
                         <div class="row">
                             <div class="col-auto mr-auto">
                                 <ul class="top-nav">
-                                    
+
                                 </ul>
                             </div>
                             <div class="col-auto">
-                            <form action="" method="post">
+                                <form action="" method="post">
                                     <ul class="top-nav">
                                         <?php if (!isset($_SESSION['id'])) { ?>
                                             <li>
@@ -128,6 +129,15 @@ $user = new user($BDD) ;
                                         <button type="submit" class="btn btn-outline-dark" name="inscrire">s'inscrire</button>
                                     </div>
                                 </form>
+                                <?php
+                                if (isset($_POST["inscrire"])) {
+
+
+                                    $error = $user->registUser($_POST['Nom'], $_POST['mdp'], $_POST['Confmdp']);
+                                    $user->errorGestion($error);
+                                }
+                                ?>
+
                             </div>
                         </div>
                     </div>
@@ -140,7 +150,7 @@ $user = new user($BDD) ;
                 <!-- Footer -->
                 <footer class="row">
                     <div class="col-12 bg-dark text-white pb-3 pt-5">
-                       
+
                     </div>
                 </footer>
                 <!-- Footer -->
@@ -152,22 +162,6 @@ $user = new user($BDD) ;
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
-
-<?php 
- if(isset($_POST["inscrire"])){
-
-    
-$error = $user->registUser($_POST['Nom'], $_POST['mdp'], $_POST['Confmdp']);
-echo $error;
-
- }
-
-
-
-?>
-
-
-
-
 </body>
+
 </html>
