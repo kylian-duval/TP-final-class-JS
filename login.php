@@ -15,7 +15,12 @@
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <?php
-    $BDD = new PDO('mysql:host=mysql-kylian-duval.alwaysdata.net; dbname=kylian-duval_jeu; charset=utf8', '223354', 'admin123456789.');
+    try {
+        $BDD = new PDO('mysql:host=mysql-kylian-duval.alwaysdata.net; dbname=kylian-duval_jeu; charset=utf8', '223354', 'admin123456789.');
+    } catch (Exception $e) {
+    
+        echo "une erreur l'or de la connection a la base de donner contacter l'administateur du site :" . $e->getMessage();
+    }
     require 'user.php';
     $user = new user($BDD);
     ?>
