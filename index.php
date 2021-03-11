@@ -1,12 +1,7 @@
 <!doctype html>
 <html lang="fr">
 <?php require 'user.php';
-try {
-    $BDD = new PDO('mysql:host=mysql-kylian-duval.alwaysdata.net; dbname=kylian-duval_jeu; charset=utf8', '223354', 'admin123456789.');
-} catch (Exception $e) {
-
-    echo "une erreur l'or de la connection a la base de donner contacter l'administateur du site :" . $e->getMessage();
-}
+$BDD = new PDO('mysql:host=192.168.65.227; dbname=jeu; charset=utf8', 'kiki', 'kiki');
 ?>
 
 <head>
@@ -149,33 +144,28 @@ try {
                                 <div class="row">
 
 
-                                    <?php
-                                    try {
-                                        $requet = $BDD->query("SELECT * FROM `jeux` WHERE 1");
-                                        while ($donné = $requet->fetch()) { ?>
-                                            <!-- Product -->
-                                            <div class="col-xl-2 col-lg-3 col-sm-6 my-3">
-                                                <div class="col-12 bg-white text-center h-100 product-item">
-                                                    <div class="row h-100">
-                                                        <div class="col-12 p-0 mb-3">
-                                                            <a href="product.php?jeux=<?php echo $donné['id_jeux'] ?>">
-                                                                <img src="images/<?php echo $donné['Image'] ?>" class="img-fluid">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-12 mb-3">
-                                                            <a href="product.php?jeux=<?php echo $donné['id_jeux'] ?>" class="product-name"><?php echo $donné['Nom'] ?></a>
-                                                        </div>
-                                                        <div class="col-12 mb-3 align-self-end">
-                                                            <a href="product.php?jeux=<?php echo $donné['id_jeux'] ?>" class="btn btn-outline-dark">savoir plus</a>
-                                                        </div>
+                                    <?php $requet = $BDD->query("SELECT * FROM `jeux` WHERE 1");
+                                    while ($donné = $requet->fetch()) { ?>
+                                        <!-- Product -->
+                                        <div class="col-xl-2 col-lg-3 col-sm-6 my-3">
+                                            <div class="col-12 bg-white text-center h-100 product-item">
+                                                <div class="row h-100">
+                                                    <div class="col-12 p-0 mb-3">
+                                                        <a href="product.php?jeux=<?php echo $donné['id_jeux'] ?>">
+                                                            <img src="images/<?php echo $donné['Image'] ?>" class="img-fluid">
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-12 mb-3">
+                                                        <a href="product.php?jeux=<?php echo $donné['id_jeux'] ?>" class="product-name"><?php echo $donné['Nom'] ?></a>
+                                                    </div>
+                                                    <div class="col-12 mb-3 align-self-end">
+                                                        <a href="product.php?jeux=<?php echo $donné['id_jeux'] ?>" class="btn btn-outline-dark">savoir plus</a>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- Product -->
-                                    <?php }
-                                    } catch (Exception $e) {
-                                        echo "une erreur l'or de l'affichase des jeux contacter l'administateur du site :" . $e->getMessage();
-                                    } ?>
+                                        </div>
+                                        <!-- Product -->
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
