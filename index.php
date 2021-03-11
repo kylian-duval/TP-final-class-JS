@@ -17,6 +17,7 @@ $BDD = new PDO('mysql:host=192.168.65.227; dbname=jeu; charset=utf8', 'kiki', 'k
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/js.js"> </script>
 </head>
 
 <body>
@@ -74,7 +75,7 @@ $BDD = new PDO('mysql:host=192.168.65.227; dbname=jeu; charset=utf8', 'kiki', 'k
                         <div class="row">
                             <div class="col-lg-auto">
                                 <div class="site-logo text-center text-lg-left">
-                                    <a href="index.php">Jeux</a>
+                                    <a href="index.php"><span onmouseover="changecouleurrouge()" onmouseout="this.style.color='black'" id="rouge">J</span><span onmouseover="changecouleurbleu()" onmouseout="this.style.color='black'" id="bleu">e</span><span onmouseover="changecouleurjaune()" onmouseout="this.style.color='black'" id="jaune">u</span><span onmouseover="changecouleurrose()" onmouseout="this.style.color='black'" id="rose">x</span></a>
                                 </div>
                             </div>
                         </div>
@@ -178,8 +179,8 @@ $BDD = new PDO('mysql:host=192.168.65.227; dbname=jeu; charset=utf8', 'kiki', 'k
             <div class="col-12 align-self-end">
                 <!-- Footer -->
                 <footer class="row">
-                     <div class="col-12 bg-dark text-white pb-3 pt-5">
-                       <!-- <div class="row">
+                    <div class="col-12 bg-dark text-white pb-3 pt-5">
+                        <!-- <div class="row">
                             <div class="col-lg-2 col-sm-4 text-center text-sm-left mb-sm-0 mb-3">
                                 <div class="row">
                                     <div class="col-12">
@@ -281,8 +282,8 @@ $BDD = new PDO('mysql:host=192.168.65.227; dbname=jeu; charset=utf8', 'kiki', 'k
                                 </div>
                             </div>
                         </div>-->
-                    </div> 
-                </footer> 
+                    </div>
+                </footer>
                 <!-- Footer -->
             </div>
         </div>

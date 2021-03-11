@@ -2,6 +2,7 @@
 session_start();
 class user
 {
+    //priver :
     private $_email;
     private $_mdp;
     private $_mdpConfirm;
@@ -11,15 +12,15 @@ class user
 
 
 
-
+//public:
     public function __construct($BDD)
     {
         $this->_BDD = $BDD;
     }
-
+//fonction pour qui connecter le user
     public function verifUserConnect($speudo, $Mdp)
     {
-        $request = $this->_BDD->prepare("SELECT * FROM user WHERE Nom_user = ? AND Mdp = ?");
+        $request = $this->_BDD->prepare("SELECT * FROM user WHERE Nom_user = ? AND Mdp = ?"); //vérification des information du user
         $request->execute(array($speudo, $Mdp));
         $userExist = $request->rowCount();
 
@@ -32,39 +33,40 @@ class user
             return "userDoesntExist";
         }
     }
-
+//fonction pour l'inscription du user
     public function registUser($speudo, $mdp, $confMdp)
     {
 
         if ($mdp == $confMdp) {
             $Nom = $speudo;
-            $vérifNam = $this->_BDD->prepare("SELECT * FROM `user` WHERE `Nom_user` = ?");
+            $vérifNam = $this->_BDD->prepare("SELECT * FROM `user` WHERE `Nom_user` = ?"); //vérification si le nom d'utilisateur et disponible
             $vérifNam->execute(array($Nom));
             $userExist = $vérifNam->rowCount();
             if ($userExist == 1) {
                 return "mailUsed";
             } else {
-                $requeteInscription = $this->_BDD->query("INSERT INTO `user`(`Nom_user`, `Mdp`, `Admin`) VALUES ('$Nom ', '$mdp' ,'FALSE')");
+                $requeteInscription = $this->_BDD->query("INSERT INTO `user`(`Nom_user`, `Mdp`, `Admin`) VALUES ('$Nom ', '$mdp' ,'FALSE')"); //réscription du user en base
                 return "succesRegister";
             }
         } else {
             return "mdpDifferents";
         }
     }
+    //fonction pour le user nom comtact
     public function conactat($Nom, $prenom, $mail, $message)
     {
     }
-
+//fonction pour commenter les jeu
     public function commetaire($id_user, $id_jeux, $message)
     {
         $this->_BDD->query("INSERT INTO `commentaire`(`id_user`, `id_jeu`, `Message`) VALUES ('$id_user','$id_jeux','$message')");
     }
-
+//fonction pour évaluer les jeu
     public function note($id_user, $id_jeux, $note)
     {
         $this->_BDD->query("INSERT INTO `note`(`id_user`, `id_jeu`, `note`) VALUES ($id_user,$id_jeux,$note)");
     }
-
+//fonction qui gère les message d'erreur
     public function errorGestion($erreur)
     {
         if ($erreur == "userDoesntExist") {

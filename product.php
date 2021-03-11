@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="fr">
 <?php require 'user.php';
-$BDD = new PDO('mysql:host=192.168.65.227; dbname=jeu; charset=utf8', 'kiki', 'kiki');
+$BDD = new PDO('mysql:host=mysql-kylian-duval.alwaysdata.net; dbname=kylian-duval_jeu; charset=utf8', '223354', 'admin123456789.');
 $user = new user($BDD);
 ?>
 
@@ -456,16 +456,16 @@ $user = new user($BDD);
                                                     $donnerverifNote = $verifNote->rowCount();
                                                     if (isset($_POST['avi'])) {
                                                         $user->commetaire($_SESSION['id'], $_GET['jeux'], $_POST['message']);
+
                                                         if ($donnerverifNote == 0) {
                                                             $user->note($_SESSION['id'], $_GET['jeux'], $_POST['note']);
                                                         } else {
                                                             echo '<span style="color:red"> vous avez déja évaluer ce jeu </span>';
                                                         }
+                                                        echo  '<meta http-equiv = "refresh" content = "0">';
                                                     }
+                                                
                                                 }
-
-
-
                                                 ?>
                                             </div>
                                         </div>

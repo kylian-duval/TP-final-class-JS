@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <?php
-    $BDD = new PDO('mysql:host=192.168.65.227; dbname=jeu; charset=utf8', 'kiki', 'kiki');
+    $BDD = new PDO('mysql:host=mysql-kylian-duval.alwaysdata.net; dbname=kylian-duval_jeu; charset=utf8', '223354', 'admin123456789.');
     require 'user.php';
     $user = new user($BDD);
     ?>
@@ -123,16 +123,10 @@
                                 </form>
                                 <?php
                                 if (isset($_POST['login'])) {
-                                    $error = $user->verifUserConnect($_POST['nom'], $_POST['mdp']); 
-                                    echo  '<meta http-equiv = "refresh" content = "1">';
-                                    ?>
-                                    
+                                    $error = $user->verifUserConnect($_POST['nom'], $_POST['mdp']); ?>
                                     <div><span><?php $user->errorGestion($error); ?></span></div>
 
-                                <?php }  ?>
-                                                
-                               
-
+                                <?php }   ?>
 
                             </div>
                         </div>
