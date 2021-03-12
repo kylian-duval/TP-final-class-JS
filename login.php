@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/js.js"> </script>
     <?php
     $BDD = new PDO('mysql:host=mysql-kylian-duval.alwaysdata.net; dbname=kylian-duval_jeu; charset=utf8', '223354', 'admin123456789.');
     require 'user.php';
@@ -30,7 +31,7 @@
                     <div class="col-12 bg-dark py-2 d-md-block d-none">
                         <div class="row">
                             <div class="col-auto mr-auto">
-            
+
                             </div>
                             <div class="col-auto">
                                 <form action="" method="post">
@@ -44,12 +45,10 @@
                                             </li>
                                         <?php  } else { ?>
                                             <li>
-
+                                                <a href=""><i class="fas fa-user-edit mr-2"></i><?php echo $_SESSION['nom']; ?></a>
                                             </li>
                                             <li>
-
                                                 <button name=déco class=deco><i class="fas fa-sign-in-alt mr-2"></i>Déconnection</button>
-
                                             </li>
                                         <?php } ?>
                                     </ul>
@@ -68,7 +67,7 @@
                         <div class="row">
                             <div class="col-lg-auto">
                                 <div class="site-logo text-center text-lg-left">
-                                    <a href="index.php">Jeux</a>
+                                    <a href="index.php"><span onmouseover="changecouleurrouge()" onmouseout="this.style.color='black'" id="rouge">J</span><span onmouseover="changecouleurbleu()" onmouseout="this.style.color='black'" id="bleu">e</span><span onmouseover="changecouleurjaune()" onmouseout="this.style.color='black'" id="jaune">u</span><span onmouseover="changecouleurrose()" onmouseout="this.style.color='black'" id="rose">x</span></a>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +139,7 @@
                 <!-- Footer -->
                 <footer class="row">
                     <div class="col-12 bg-dark text-white pb-3 pt-5">
-                       
+
                     </div>
                 </footer>
                 <!-- Footer -->

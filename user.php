@@ -28,6 +28,7 @@ class user
             $data = $request->fetch();
             $_SESSION['id'] = $data['id_user'];
             $_SESSION['droits'] = $data['Admin'];
+            $_SESSION['nom'] = $data['Nom_user']; 
             return "succesConnect";
         } else {
             return "userDoesntExist";

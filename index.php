@@ -12,7 +12,7 @@ $BDD = new PDO('mysql:host=mysql-kylian-duval.alwaysdata.net; dbname=kylian-duva
 
     <link href="//fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i" rel="stylesheet"> 
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/all.min.css">
@@ -43,20 +43,12 @@ $BDD = new PDO('mysql:host=mysql-kylian-duval.alwaysdata.net; dbname=kylian-duva
                                                 <a href="login.php"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
                                             </li>
                                         <?php  } else { ?>
-                                            <li class="nav-item dropdown">
-                                                <!-- <!-- <a class= deco href="#" id="electronics" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Electronics</a>
-                                                <div class="dropdown-menu" aria-labelledby="electronics">
-                                                    <a class="dropdown-item" href="category.php">Computers</a>
-                                                    <a class="dropdown-item" href="category.php">Mobile Phones</a>
-                                                    <a class="dropdown-item" href="category.php">Television Sets</a>
-                                                    <a class="dropdown-item" href="category.php">DSLR Cameras</a>
-                                                    <a class="dropdown-item" href="category.php">Projectors</a> 
-                                                </div> -->
-                                            </li>
                                             <li>
+                                            <a href=""><i class="fas fa-user-edit mr-2"></i><?php echo $_SESSION['nom']; ?></a>
+                                            </li>
 
+                                            <li>
                                                 <button name=déco class=deco><i class="fas fa-sign-in-alt mr-2"></i>Déconnection</button>
-
                                             </li>
                                         <?php } ?>
                                     </ul>

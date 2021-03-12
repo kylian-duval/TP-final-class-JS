@@ -18,6 +18,7 @@ $user = new user($BDD);
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/js.js"> </script>
 
 </head>
 
@@ -45,12 +46,10 @@ $user = new user($BDD);
                                             </li>
                                         <?php  } else { ?>
                                             <li>
-
+                                                <a href=""><i class="fas fa-user-edit mr-2"></i><?php echo $_SESSION['nom']; ?></a>
                                             </li>
                                             <li>
-
                                                 <button name=déco class=deco><i class="fas fa-sign-in-alt mr-2"></i>Déconnection</button>
-
                                             </li>
                                         <?php } ?>
                                     </ul>
@@ -69,7 +68,7 @@ $user = new user($BDD);
                         <div class="row">
                             <div class="col-lg-auto">
                                 <div class="site-logo text-center text-lg-left">
-                                    <a href="index.php">Jeux</a>
+                                    <a href="index.php"><span onmouseover="changecouleurrouge()" onmouseout="this.style.color='black'" id="rouge">J</span><span onmouseover="changecouleurbleu()" onmouseout="this.style.color='black'" id="bleu">e</span><span onmouseover="changecouleurjaune()" onmouseout="this.style.color='black'" id="jaune">u</span><span onmouseover="changecouleurrose()" onmouseout="this.style.color='black'" id="rose">x</span></a>
                                 </div>
                             </div>
                         </div>
@@ -464,7 +463,6 @@ $user = new user($BDD);
                                                         }
                                                         echo  '<meta http-equiv = "refresh" content = "0">';
                                                     }
-                                                
                                                 }
                                                 ?>
                                             </div>
@@ -491,7 +489,7 @@ $user = new user($BDD);
                 <!-- Footer -->
                 <footer class="row">
                     <div class="col-12 bg-dark text-white pb-3 pt-5">
-                       
+
                     </div>
                 </footer>
                 <!-- Footer -->
