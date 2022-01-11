@@ -1,6 +1,10 @@
 <!doctype html>
 <html lang="fr">
-
+<?php
+    require "session.php";
+    require "class/user.php";
+    $user = new user($BDD);
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -19,12 +23,6 @@
 </head>
 
 <body>
-    <?php
-    $BDD = new PDO('mysql:host=mysql-kylian-duval.alwaysdata.net; dbname=kylian-duval_jeu; charset=utf8', '223354', 'admin123456789.');
-    $user = new user($BDD);
-
-
-    ?>
     <div class="container-fluid">
         <div class="row min-vh-100">
             <div class="col-12">
