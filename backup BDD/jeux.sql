@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost
--- Généré le : mar. 09 mars 2021 à 14:51
--- Version du serveur :  10.1.47-MariaDB-0+deb9u1
--- Version de PHP : 7.0.33-0+deb9u10
+-- Host: mysql-kylian-duval.alwaysdata.net
+-- Generation Time: Jan 11, 2022 at 11:26 AM
+-- Server version: 10.5.11-MariaDB
+-- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,50 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `jeu`
+-- Database: `kylian-duval_jeu`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `commentaire`
---
-
-CREATE TABLE `commentaire` (
-  `id_ commentaire` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_jeu` int(11) NOT NULL,
-  `Message` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `commentaire`
---
-
-INSERT INTO `commentaire` (`id_ commentaire`, `id_user`, `id_jeu`, `Message`) VALUES
-(18, 13, 1, 'test'),
-(17, 13, 1, 'test'),
-(16, 13, 1, 'super'),
-(15, 10, 1, '2158');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `contact`
---
-
-CREATE TABLE `contact` (
-  `id_message` int(11) NOT NULL,
-  `Nom` varchar(50) NOT NULL,
-  `Prénom` varchar(50) NOT NULL,
-  `Mail` varchar(50) NOT NULL,
-  `Message` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `jeux`
+-- Table structure for table `jeux`
 --
 
 CREATE TABLE `jeux` (
@@ -76,7 +38,7 @@ CREATE TABLE `jeux` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `jeux`
+-- Dumping data for table `jeux`
 --
 
 INSERT INTO `jeux` (`id_jeux`, `Nom`, `Image`, `Image2`, `Image3`, `Image4`, `Description`) VALUES
@@ -84,121 +46,31 @@ INSERT INTO `jeux` (`id_jeux`, `Nom`, `Image`, `Image2`, `Image3`, `Image4`, `De
 (2, 'Counter Strike', 'Counterstrike.png', 'csgo.jpg', 'quest-ce-que-le-bogue-du-spectateur-dans-csgo.webp', 'csgo-gameplay-ban-twitch-cheating.jpg', 'Counter-Strike: Global Offensive (abrégé CS:GO) est un jeu de tir à la première personne multijoueur en ligne basé sur le jeu d\'équipe développé par Valve Corporation. Il est sorti le 21 août 2012 sur PC et consoles (Xbox 360, PlayStation 3). En 2017, Microsoft annonce que le jeu sur Xbox 360 sera compatible avec la Xbox One. Depuis le 6 décembre 2018, le jeu est disponible gratuitement en free-to-play.\r\nIl s\'agit du mode original de Counter-Strike. Dans Global Offensive, il est composé lui-même de deux modes, qui sont l\'Occasionnel et le Compétitif.\r\n\r\nLe fonctionnement de base est identique aux autres versions de Counter-Strike : les joueurs sont divisés en deux équipes, les terroristes et les antiterroristes.'),
 (4, 'Left 4 Dead 2', 'Left4Dead2.jpg', 'Play-Left-4-Dead-2-Step-26.jpg', '354055bde139310d66c7652433183.jpg', '3735139-screenshot2020-09-16at10.37.34am.jpg', 'Left 4 Dead 2 (littéralement « Laissés pour morts aussi »), abrégé L4D2, est un jeu de tir à la première personne développé par Valve et sorti en novembre 2009. Il met en scène une équipe de quatre survivants qui traversent un monde rempli de zombies appelés « infectés ».\r\n\r\nC\'est la suite de Left 4 Dead, sorti un an plus tôt. Le gameplay est similaire, mais enrichi de nouveaux types d\'infectés, de nouvelles armes et de nouveaux modes de jeu. Depuis la sortie de l\'extension Cold Stream en 2012, le jeu contient l\'ensemble des campagnes des deux opus.'),
 (5, 'Payday 2', 'payday2.jpg', 'maxresdefault.jpg', 'payday-2-vr.jpg', 'payday-2-crimewave-edition-xbox-one-3.jpg', 'Payday 2 est un jeu vidéo en mode coopératif et solo de tir à la première personne développé par Overkill Software. C\'est la suite de Payday: The Heist (2011). Il est sorti en août 2013 sur Xbox 360 via Xbox Live Arcade, sur PlayStation 3 via PlayStation Network, sur Windows et sur Linux via Steam. Le jeu est également sorti sur support physique. Une version appelée Crimewave Edition est sortie le 12 juin 2015 sur PlayStation 4 et sur Xbox One. Une version Nintendo Switch est sortie en février 2018.'),
-(6, 'Tom clancy\'s rainbow six siege', 'rainbow.png', 'image_cover.jpg', '12-1-2015_14_1_1.jpg', 'tom-clancys-rainbow-sixr-siege2017-10-16-16-16-9.jpg', 'Rainbow Six: Siege est un jeu de tir tactique où le joueur incarne différents agents de plusieurs unités de forces spéciales et de groupes d\'interventions qui constituent l’équipe Rainbow. Comme les autres titres de la série, il se concentre fortement sur le jeu en équipe et le \"réalisme\" des interventions. Cependant, il existe de grandes différences par rapport à d\'anciennes versions du jeu, avec un accent multijoueur important et des environnements entièrement destructibles. En tout, 10 cartes, le SWAT américain, le SAS anglais, le GSG 9 allemand, les Spetsnaz russes et le GIGN français sont disponibles lors de la sortie du jeu. Actuellement, 24 unités d\'interventions et 21 cartes sont disponibles dans Tom Clancy’s Rainbow Six: Siege.');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `note`
---
-
-CREATE TABLE `note` (
-  `id_note` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_jeu` int(11) NOT NULL,
-  `note` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+(6, 'Tom clancy\'s rainbow six siege', 'rainbow.png', 'image_cover.jpg', '12-1-2015_14_1_1.jpg', 'tom-clancys-rainbow-sixr-siege2017-10-16-16-16-9.jpg', 'Rainbow Six: Siege est un jeu de tir tactique où le joueur incarne différents agents de plusieurs unités de forces spéciales et de groupes d\'interventions qui constituent l’équipe Rainbow. Comme les autres titres de la série, il se concentre fortement sur le jeu en équipe et le \"réalisme\" des interventions. Cependant, il existe de grandes différences par rapport à d\'anciennes versions du jeu, avec un accent multijoueur important et des environnements entièrement destructibles. En tout, 10 cartes, le SWAT américain, le SAS anglais, le GSG 9 allemand, les Spetsnaz russes et le GIGN français sont disponibles lors de la sortie du jeu. Actuellement, 24 unités d\'interventions et 21 cartes sont disponibles dans Tom Clancy’s Rainbow Six: Siege.'),
+(7, 'Grand Theft Auto V', 'gta.png', 'GTA-V-big-890x501.jpg', '801x410_d56be-593356900.jpg', '200.gif', 'Grand Theft Auto V (plus communément abrégé GTA V) est un jeu vidéo d\'action-aventure, développé par Rockstar North et édité par Rockstar Games. Il est sorti en 2013 sur PlayStation 3 et Xbox 360, en 2014 sur PlayStation 4 et Xbox One puis en 2015 sur PC. Le jeu fait partie de la série vidéoludique Grand Theft Auto.\r\n\r\nCet épisode se déroule dans l\'État fictif de San Andreas en Californie du Sud. L\'histoire solo suit trois protagonistes?: le braqueur de banque à la retraite Michael De Santa, le gangster Franklin Clinton et le trafiquant de drogue et d\'armes Trevor Philips, et leurs braquages sous la pression d\'une agence gouvernementale corrompue et de puissants criminels. Le jeu en monde ouvert permet aux joueurs de parcourir librement la campagne ouverte de San Andreas et la ville fictive de Los Santos, basée sur Los Angeles.'),
+(9, 'hitman 3', 'hitman3.png', 'B9725927528Z.1_20210125174318_000+G6HHFM919.2-0.jpg', 'Landscape-2560x1440-bd7696342eacc951048c0765a204f371.jpg', '1597741042-9381-card.jpg', 'Hitman 3 est un jeu vidéo d\'action-aventure et d\'infiltration développé et édité par IO Interactive, sorti le 20 janvier 2021 sur PC, PlayStation 4, PlayStation 5, Xbox One, Xbox Series. Le jeu est également jouable sur Stadia et Nintendo Switch via le cloud gaming.\r\n\r\nTroisième et dernière partie de la trilogie World of Assassination, il fait suite aux jeux Hitman (2016) et Hitman 2 (2018). Les développeurs ont déclaré que le jeu sera « beaucoup plus mature, sérieux et sombre » que les précédents épisodes de la trilogie.'),
+(10, 'Cyberpunk 2077', 'CYBERPUNK-2077.png', 'raw.jpg', 'cyberpunk2077.jpg', 'Cyberpunk_2077_website_1617083795450.jpg.jpeg', 'Cyberpunk 2077 est un jeu vidéo d\'action-RPG en vue à la première personne développé par CD Projekt RED, inspiré du jeu de rôle sur table Cyberpunk 2020 conçue par Mike Pondsmith. Le jeu présente un monde futuriste dystopique de type cyberpunk dans lequel la technologie coexiste avec une société humaine dégénérée');
 
 --
--- Déchargement des données de la table `note`
---
-
-INSERT INTO `note` (`id_note`, `id_user`, `id_jeu`, `note`) VALUES
-(4, 13, 1, 5),
-(3, 10, 1, 3);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `user`
---
-
-CREATE TABLE `user` (
-  `id_user` int(11) NOT NULL,
-  `Nom_user` varchar(30) NOT NULL,
-  `Mdp` varchar(30) NOT NULL,
-  `Admin` varchar(5) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `user`
---
-
-INSERT INTO `user` (`id_user`, `Nom_user`, `Mdp`, `Admin`) VALUES
-(9, 'duval ', '123', 'FALSE'),
-(10, 'admin ', '123', 'FALSE'),
-(12, 'kylian ', '123', 'FALSE'),
-(13, 'Louis ', 'motdepassesecure', 'FALSE'),
-(14, 'test ', 'test', 'FALSE');
-
---
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `commentaire`
---
-ALTER TABLE `commentaire`
-  ADD PRIMARY KEY (`id_ commentaire`);
-
---
--- Index pour la table `contact`
---
-ALTER TABLE `contact`
-  ADD PRIMARY KEY (`id_message`);
-
---
--- Index pour la table `jeux`
+-- Indexes for table `jeux`
 --
 ALTER TABLE `jeux`
   ADD PRIMARY KEY (`id_jeux`);
 ALTER TABLE `jeux` ADD FULLTEXT KEY `Description` (`Description`);
 
 --
--- Index pour la table `note`
---
-ALTER TABLE `note`
-  ADD PRIMARY KEY (`id_note`);
-
---
--- Index pour la table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `commentaire`
---
-ALTER TABLE `commentaire`
-  MODIFY `id_ commentaire` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT pour la table `contact`
---
-ALTER TABLE `contact`
-  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `jeux`
+-- AUTO_INCREMENT for table `jeux`
 --
 ALTER TABLE `jeux`
-  MODIFY `id_jeux` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT pour la table `note`
---
-ALTER TABLE `note`
-  MODIFY `id_note` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT pour la table `user`
---
-ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_jeux` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
