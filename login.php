@@ -4,6 +4,10 @@
     require "session.php";
     require "class/user.php";
     $user = new user($BDD);
+
+    if(isset($_SESSION['id'])){
+        header("Location: index.php");
+    }
 ?>
 <head>
     <meta charset="UTF-8">
