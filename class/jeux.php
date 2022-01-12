@@ -14,6 +14,7 @@ class jeux
     public function __construct($BDD)
     {
         $this->_BDD = $BDD;
+        $this->_image1 = "test.png";
     }
 
     public function ajoutjeux($nom, $image1, $image2, $image3, $image4, $description)
@@ -31,9 +32,10 @@ class jeux
     }
 
     public function removejeux($id){
+        echo "activer";
         unlink('images/$this->_image1');
-        unlink('images/$this->_image2');
-        unlink('images/$this->_image3');
-        unlink('images/$this->_image4');
+        //unlink('images/$this->_image2');
+        //unlink('images/$this->_image3');
+        //unlink('images/$this->_image4');
     }
 }
