@@ -427,12 +427,12 @@ $user = new user($BDD);
                                         <!-- Add Review -->
                                         <div class="row">
                                             <div class="col-12">
-                                                <h4>Add Review</h4>
+                                                <h4>Ajouter un commentaire</h4>
                                             </div>
                                             <div class="col-12">
                                                 <form method="post">
                                                     <div class="form-group">
-                                                        <textarea class="form-control" placeholder="Give your review" name="message"></textarea>
+                                                        <textarea class="form-control" placeholder="Donnez votre avis" name="message"></textarea>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="d-flex ratings justify-content-end flex-row-reverse">
