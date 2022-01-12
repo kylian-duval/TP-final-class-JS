@@ -1,12 +1,19 @@
 <!doctype html>
 <html lang="fr">
 <?php
-    require "session.php";
-    require "class/user.php";
-    require "class/jeux.php";
-    $user = new user($BDD);
-    $jeux = new jeux($BDD);
+require "session.php";
+require "class/user.php";
+require "class/jeux.php";
+$user = new user($BDD);
+$jeux = new jeux($BDD);
+
+
+if (isset($_POST['déco'])) {
+    $user->deconnection();
+}
+
 ?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -15,7 +22,7 @@
 
     <link href="//fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i" rel="stylesheet"> 
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i" rel="stylesheet">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/all.min.css">
@@ -45,11 +52,11 @@
                                             <li>
                                                 <a href="login.php"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
                                             </li>
-                                        <?php  } else { 
+                                        <?php  } else {
                                             $user->giveUser($_SESSION['id']);
                                         ?>
                                             <li>
-                                            <a href=""><i class="fas fa-user-edit mr-2"></i><?= $user->getNam(); ?></a>
+                                                <a href=""><i class="fas fa-user-edit mr-2"></i><?= $user->getNam(); ?></a>
                                             </li>
 
                                             <li>
@@ -58,10 +65,6 @@
                                         <?php } ?>
                                     </ul>
                                 </form>
-                                <?php if (isset($_POST['déco'])) {
-                                    session_destroy();
-                                    echo  '<meta http-equiv = "refresh" content = "0">';
-                                } ?>
                             </div>
                         </div>
                     </div>
