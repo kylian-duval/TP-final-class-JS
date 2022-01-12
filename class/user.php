@@ -30,6 +30,7 @@ class user
             $_SESSION['id'] = $data['id_user'];
             $this->_role = $data['Admin'];
             $this->_nom = $data['Nom_user'];
+            echo '<meta http-equiv="refresh" content="0">';
             return "succesConnect";
         } else {
             return "userDoesntExist";
