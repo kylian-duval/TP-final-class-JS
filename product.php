@@ -211,6 +211,7 @@
                                                 <!-- Comments -->
                                                 <div class="col-12 text-justify py-2 mb-3 bg-gray">
                                                     <div class="row">
+                                                        <h4>commantaire :</h4>
                                                         <div class="col-12">
                                                             <strong class="mr-2"><?php echo $donné['Nom_user'] ?></strong>
                                                             <small>
