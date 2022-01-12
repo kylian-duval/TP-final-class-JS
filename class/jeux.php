@@ -34,8 +34,8 @@ class jeux
     public function removejeux($id){
         echo "activer";
         unlink('images/'.$this->_image1);
-        //unlink('images/$this->_image2');
-        //unlink('images/$this->_image3');
-        //unlink('images/$this->_image4');
+        unlink('images/'.$this->_image2);
+        unlink('images/'.$this->_image3);
+        unlink('images/'.$this->_image4);
     }
 }
