@@ -46,10 +46,8 @@ class user
     public function registUser($speudo, $mdp, $confMdp)
     {
         $speudo = htmlspecialchars($speudo);
-        $mdp = hash('sha256', $mdp);
-        $confMdp = hash('sha256', $confMdp);
-
         if ($mdp == $confMdp) {
+            $mdp = hash('sha256', $mdp);
             $Nom = $speudo;
             $vérifNam = $this->_BDD->prepare("SELECT * FROM `user` WHERE `Nom_user` = ?"); //vérification si le nom d'utilisateur et disponible
             $vérifNam->execute(array($Nom));
@@ -58,6 +56,7 @@ class user
                 return "mailUsed";
             } else {
                 $requeteInscription = $this->_BDD->query("INSERT INTO `user`(`Nom_user`, `Mdp`, `Admin`) VALUES ('$Nom ', '$mdp' ,'FALSE')"); //réscription du user en base
+                $this->verifUserConnect($speudo, $confMdp);
                 return "succesRegister";
             }
         } else {
