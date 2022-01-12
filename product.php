@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="fr">
 <?php
-    require "session.php";
-    require "class/user.php";
-    $user = new user($BDD);
+require "session.php";
+require "class/user.php";
+$user = new user($BDD);
 ?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -210,8 +211,8 @@
                                                 <!--SELECT user.Nom_user, jeux.id_jeux ,commentaire.Message, commentaire.note FROM user, commentaire, jeux WHERE commentaire.id_user = user.id_user AND commentaire.id_jeu = jeux.id_jeux AND jeux.id_jeux = $idjeu-->
                                                 <!-- Comments -->
                                                 <div class="col-12 text-justify py-2 mb-3 bg-gray">
+                                                    <h4>commantaire :</h4>
                                                     <div class="row">
-                                                        <h4>commantaire :</h4>
                                                         <div class="col-12">
                                                             <strong class="mr-2"><?php echo $donné['Nom_user'] ?></strong>
                                                             <small>

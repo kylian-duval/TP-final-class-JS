@@ -29,6 +29,14 @@ class jeux
 
     public function getjeux($id)
     {
+        $requetjeu = $this->_BDD->query("SELECT * FROM `jeux` WHERE `id_jeux`= $id");
+        $donnéjeux = $requetjeu->fetch();
+        $this->_nom = $donnéjeux['Nom'];
+        $this->_image1=$donnéjeux['Image'];
+        $this->_image2=$donnéjeux['Image1'];
+        $this->_image3=$donnéjeux['Image2'];
+        $this->_image4=$donnéjeux['Image3'];
+        $this->_description = $donnéjeux['Description'];
     }
 
     public function removejeux($id){
