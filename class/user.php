@@ -2,6 +2,7 @@
 class user
 {
     //priver :
+    private $_id;
     private $_email;
     private $_mdp;
     private $_mdpConfirm;
@@ -64,6 +65,35 @@ class user
             return "mdpDifferents";
         }
     }
+
+
+    public function giveUser($id){
+        $vérifNam = $this->_BDD->prepare("SELECT * FROM `user` WHERE `id_user` = ?");
+        $vérifNam->execute(array($id));
+        $data = $vérifNam ->fetch();
+        $this->_nom = $data['Nom_user'];
+        $this->_role = $data['Admin'];
+        $this->_mdp = $data['Mdp'];
+        $this->_id = $id;
+    }
+
+    public function getNam(){
+        return $this->_nom;
+    }
+
+    public function getRole(){
+        return $this->_role;
+    }
+
+    public function getMdp(){
+        return $this->_mdp;
+    }
+
+    public function getId(){
+        return $this->_id;
+    }
+
+
     //fonction pour le user nom comtact
     public function conactat($Nom, $prenom, $mail, $message)
     {

@@ -45,9 +45,11 @@
                                             <li>
                                                 <a href="login.php"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
                                             </li>
-                                        <?php  } else { ?>
+                                        <?php  } else { 
+                                            $user->giveUser($_SESSION['id']);
+                                        ?>
                                             <li>
-                                            <a href=""><i class="fas fa-user-edit mr-2"></i><?php echo $_SESSION['id']; ?></a>
+                                            <a href=""><i class="fas fa-user-edit mr-2"></i><?= $user->getNam(); ?></a>
                                             </li>
 
                                             <li>
