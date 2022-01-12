@@ -203,6 +203,7 @@ $user = new user($BDD);
                                 <!-- Details -->
                                 <div class="col-md-7">
                                     <div class="row">
+                                        <h4>commantaire :</h4>
                                         <div class="col-12">
                                             <?php
 
@@ -211,7 +212,6 @@ $user = new user($BDD);
                                                 <!--SELECT user.Nom_user, jeux.id_jeux ,commentaire.Message, commentaire.note FROM user, commentaire, jeux WHERE commentaire.id_user = user.id_user AND commentaire.id_jeu = jeux.id_jeux AND jeux.id_jeux = $idjeu-->
                                                 <!-- Comments -->
                                                 <div class="col-12 text-justify py-2 mb-3 bg-gray">
-                                                    <h4>commantaire :</h4>
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <strong class="mr-2"><?php echo $donné['Nom_user'] ?></strong>
