@@ -46,4 +46,28 @@ class jeux
         unlink('images/'.$this->_image3);
         unlink('images/'.$this->_image4);
     }
+
+    public function getNom(){
+        return $this->_nom;
+    }
+
+    public function getimage1(){
+        return $this->_image1;
+    }
+
+    public function getimage2(){
+        return $this->_image2;
+    }
+
+    public function getimage3(){
+        return $this->_image3;
+    }
+
+    public function getimage4(){
+        return $this->_image4;
+    }
+
+    public function getdescription(){
+        return $this->_description;
+    }
 }

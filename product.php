@@ -256,7 +256,7 @@ $user = new user($BDD);
                                                         </div>
                                                         <div class="col-12">
                                                             <small>
-                                                                <i class="fas fa-clock mr-2"></i>5 hours ago
+                                                                <!--<i class="fas fa-clock mr-2"></i>5 hours ago -->
                                                             </small>
                                                         </div>
                                                     </div>
