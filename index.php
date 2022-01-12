@@ -3,7 +3,9 @@
 <?php
     require "session.php";
     require "class/user.php";
+    require "class/jeux.php";
     $user = new user($BDD);
+    $jeux = new jeux($BDD);
 ?>
 <head>
     <meta charset="UTF-8">
@@ -45,7 +47,7 @@
                                             </li>
                                         <?php  } else { ?>
                                             <li>
-                                            <a href=""><i class="fas fa-user-edit mr-2"></i><?php echo $_SESSION['nom']; ?></a>
+                                            <a href=""><i class="fas fa-user-edit mr-2"></i><?php echo $_SESSION['id']; ?></a>
                                             </li>
 
                                             <li>
