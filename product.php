@@ -203,7 +203,7 @@ $user = new user($BDD);
                                 <!-- Details -->
                                 <div class="col-md-7">
                                     <div class="row">
-                                        <h4>commantaire :</h4>
+                                        <h4><b>commantaire :</b></h4>
                                         <div class="col-12">
                                             <?php
 
